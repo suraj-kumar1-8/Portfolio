@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { FaGithub } from 'react-icons/fa'
-import { SiLeetcode } from 'react-icons/si'
+import { SiLeetcode, SiHackerrank } from 'react-icons/si'
 import SectionHeading from './common/SectionHeading'
 import { ANIMATION_DURATIONS, ANIMATION_DELAYS } from '../constants/animations'
 import useInView from '../hooks/useInView'
@@ -28,24 +27,16 @@ function AnimatedCounter({ value, duration = 1500 }) {
   return <span>{display}</span>
 }
 
-// Generate contribution heatmap data
-const generateHeatmap = () => {
-  const weeks = 20
-  const days = 7
-  return Array.from({ length: weeks }, () =>
-    Array.from({ length: days }, () => Math.random() * 0.8 + 0.1)
-  )
-}
-
 const stats = {
-  github: {
-    contributions: generateHeatmap()
-  },
   leetcode: {
-    total: 102,
-    easy: 52,
-    medium: 38,
-    hard: 12
+    total: 200,
+    easy: 80,
+    medium: 90,
+    hard: 30
+  },
+  hackerrank: {
+    rating: 5,
+    badges: ['JavaScript', 'Python', 'Java', 'C++', 'Problem Solving']
   }
 }
 
@@ -53,60 +44,18 @@ export default function LiveStats() {
   const [ref, inView] = useInView(0.2)
 
   return (
-    <section ref={ref} aria-label="Live Coding & GitHub Stats" className="relative">
+    <section ref={ref} aria-label="Coding Platform Stats" className="relative">
       <SectionHeading
-        title="Live Coding & GitHub Stats"
-        subtitle="Focused view of current LeetCode progress and GitHub contribution activity"
+        title="Coding Platform Stats"
+        subtitle="Current progress on LeetCode and HackerRank"
       />
 
       <div className="grid md:grid-cols-2 gap-6">
-        {/* GitHub Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: ANIMATION_DURATIONS.entrance, ease: 'easeOut' }}
-          className="glass-card rounded-2xl p-6 flex flex-col gap-4"
-        >
-          <div className="flex items-center gap-3 mb-6">
-            <FaGithub className="text-2xl text-slate-200" />
-            <h3 className="text-lg font-semibold text-slate-100">GitHub Activity</h3>
-          </div>
-
-          {/* Contribution Heatmap */}
-          <div className="mt-2">
-            <p className="text-sm text-slate-400 mb-3">Contribution Activity (GitHub-style grid)</p>
-            <div className="overflow-x-auto">
-              <div className="flex gap-1">
-                {stats.github.contributions.map((week, wIdx) => (
-                  <div key={wIdx} className="flex flex-col gap-1">
-                    {week.map((value, dIdx) => {
-                      const intensity =
-                        value > 0.7 ? 'bg-emerald-400' :
-                        value > 0.5 ? 'bg-emerald-400/70' :
-                        value > 0.3 ? 'bg-emerald-400/50' :
-                        value > 0.1 ? 'bg-emerald-400/30' :
-                        'bg-slate-800'
-                      return (
-                        <div
-                          key={`${wIdx}-${dIdx}`}
-                          className={`w-3 h-3 rounded-sm ${intensity} transition-opacity hover:opacity-80`}
-                          title={`${Math.round(value * 100)}% activity`}
-                        />
-                      )
-                    })}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <p className="text-xs text-slate-500 mt-3">Last 20 weeks</p>
-          </div>
-        </motion.div>
-
         {/* LeetCode Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: ANIMATION_DURATIONS.entrance, delay: ANIMATION_DELAYS.section, ease: 'easeOut' }}
+          transition={{ duration: ANIMATION_DURATIONS.entrance, ease: 'easeOut' }}
           className="glass-card rounded-2xl p-6"
         >
           <div className="flex items-center gap-3 mb-6">
@@ -118,7 +67,7 @@ export default function LiveStats() {
           <div className="mb-6">
             <p className="text-sm text-slate-400 mb-2">Problems Solved</p>
             <p className="text-4xl font-bold text-[#FFA116]">
-              <AnimatedCounter value={stats.leetcode.total} />
+              <AnimatedCounter value={stats.leetcode.total} />+
             </p>
           </div>
 
@@ -173,6 +122,52 @@ export default function LiveStats() {
                   <AnimatedCounter value={stats.leetcode.hard} />
                 </span>
               </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* HackerRank Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: ANIMATION_DURATIONS.entrance, delay: ANIMATION_DELAYS.section, ease: 'easeOut' }}
+          className="glass-card rounded-2xl p-6"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <SiHackerrank className="text-2xl text-[#00EA64]" />
+            <h3 className="text-lg font-semibold text-slate-100">HackerRank Achievement</h3>
+          </div>
+
+          {/* Rating */}
+          <div className="mb-8">
+            <p className="text-sm text-slate-400 mb-2">Overall Rating</p>
+            <div className="flex items-baseline gap-2">
+              <p className="text-5xl font-bold text-[#00EA64]">
+                <AnimatedCounter value={stats.hackerrank.rating} />
+              </p>
+              <p className="text-2xl text-[#00EA64]">★</p>
+            </div>
+          </div>
+
+          {/* Skills Badges */}
+          <div className="space-y-3">
+            <p className="text-sm text-slate-400 mb-4">5-Star Rating In:</p>
+            <div className="flex flex-wrap gap-2">
+              {stats.hackerrank.badges.map((badge, idx) => (
+                <motion.div
+                  key={badge}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                  transition={{
+                    delay: idx * ANIMATION_DELAYS.stagger,
+                    duration: ANIMATION_DURATIONS.entrance
+                  }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#00EA64]/10 border border-[#00EA64]/30 text-sm font-medium text-[#00EA64]"
+                >
+                  <span>✓</span>
+                  <span>{badge}</span>
+                </motion.div>
+              ))}
             </div>
           </div>
         </motion.div>

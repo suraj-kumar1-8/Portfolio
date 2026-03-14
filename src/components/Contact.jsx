@@ -102,7 +102,7 @@ export default function Contact() {
   ]
 
   return (
-    <section ref={ref} aria-label="Contact section" className="relative">
+    <section ref={ref} aria-label="Contact section" className="relative py-12 md:py-16">
       <SectionHeading
         title="Let's Connect"
         subtitle="Have a question or want to collaborate? I'd love to hear from you."

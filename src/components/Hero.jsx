@@ -100,14 +100,23 @@ export default function Hero() {
               transition={{ delay: ANIMATION_DELAYS.section * 2.5, duration: ANIMATION_DURATIONS.entrance, ease: 'easeOut' }}
               className="max-w-xl text-sm md:text-base text-slate-300 leading-relaxed"
             >
-              Software Developer & Problem Solver
+              Full Stack Developer | Software Developer | Problem Solver
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: ANIMATION_DELAYS.section * 3, duration: ANIMATION_DURATIONS.entrance, ease: 'easeOut' }}
+              className="max-w-xl text-sm md:text-base text-slate-400 leading-relaxed"
+            >
+              Building scalable web applications using MERN stack and cloud technologies
             </motion.p>
 
             {/* Resume + socials */}
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: ANIMATION_DELAYS.section * 3, duration: ANIMATION_DURATIONS.entrance, ease: 'easeOut' }}
+              transition={{ delay: ANIMATION_DELAYS.section * 3.5, duration: ANIMATION_DURATIONS.entrance, ease: 'easeOut' }}
               className="flex flex-col sm:flex-row sm:items-center gap-5 pt-3"
             >
               <motion.a

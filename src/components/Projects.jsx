@@ -90,6 +90,27 @@ const projects = [
       'Gained experience securing APIs and dashboards with JWT and role-based checks',
       'Learned to design a UI that surfaces only the most important metrics without noise'
     ]
+  },
+  {
+    title: 'AI Code Review System',
+    desc: 'Intelligent code analysis system that reviews code and suggests improvements using rule-based logic and pattern recognition.',
+    category: 'AI',
+    problem: 'Developers spend significant time on manual code reviews, which can be subjective and time-consuming. Automated code analysis helps catch common issues, enforce best practices, and improve code quality.',
+    architecture: 'Built with React frontend for the code editor interface, Node.js/Express backend for processing code analysis, and MongoDB for storing review history. Uses intelligent rule-based logic to detect patterns and suggest improvements.',
+    tags: ['React', 'Node.js', 'Express', 'MongoDB'],
+    imageHint: 'Code review interface with AI suggestions',
+    github: 'https://github.com/suraj-kumar1-8/ai-code-review',
+    demo: '#',
+    challenges: [
+      'Parsing and analyzing different programming languages accurately',
+      'Developing intelligent rules that provide meaningful and actionable feedback',
+      'Balancing analysis depth with performance for large codebases'
+    ],
+    learnings: [
+      'Gained experience in code parsing and AST (Abstract Syntax Tree) analysis',
+      'Learned how to design intelligent rule engines for pattern detection',
+      'Improved understanding of backend processing for computationally intensive tasks'
+    ]
   }
 ]
 

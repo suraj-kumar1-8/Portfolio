@@ -53,22 +53,28 @@ export default function ProjectCard({ title, desc, tags, github, demo, imageHint
             <p className="mt-1 text-xs md:text-sm text-slate-300 leading-relaxed">{desc}</p>
           </div>
           <div className="flex flex-col items-end gap-2">
-            <a
+            <motion.a
               href={github}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900/70 border border-white/10 text-slate-100 hover:text-white hover:border-sky-400 transition-colors"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900/70 border border-white/10 text-slate-100 hover:text-white hover:border-sky-400 hover:bg-slate-800 transition-all duration-300 group"
             >
-              <FiGithub />
-            </a>
-            <a
+              <span className="absolute h-5 w-5 rounded-full bg-sky-400/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <FiGithub className="relative z-10" />
+            </motion.a>
+            <motion.a
               href={demo}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900/70 border border-white/10 text-slate-100 hover:text-white hover:border-emerald-400 transition-colors"
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900/70 border border-white/10 text-slate-100 hover:text-white hover:border-emerald-400 hover:bg-slate-800 transition-all duration-300 group"
             >
-              <FiExternalLink />
-            </a>
+              <span className="absolute h-5 w-5 rounded-full bg-emerald-400/20 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <FiExternalLink className="relative z-10" />
+            </motion.a>
           </div>
         </div>
 
