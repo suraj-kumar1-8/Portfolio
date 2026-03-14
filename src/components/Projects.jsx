@@ -8,113 +8,113 @@ import { ANIMATION_DURATIONS, ANIMATION_DELAYS } from '../constants/animations'
 
 const projects = [
   {
-    title: 'Mental Health AI Chatbot',
-    desc: 'Conversational assistant that helps students track mood, reflect on patterns and surface helpful resources in a safe space.',
+    title: 'AICT Regulation Bot',
+    desc: 'A chatbot-based system built using the MERN stack to help users quickly access AICT regulation-related information.',
     category: 'Full Stack',
-    problem: 'Students often struggle with mental health issues but lack accessible, non-judgmental platforms to express their feelings and track their emotional patterns over time.',
-    architecture: 'Built with MERN stack using React for the frontend, Node.js/Express for RESTful API, MongoDB for user data and conversation history, integrated with OpenAI API for intelligent responses.',
-    tags: ['MERN', 'JWT Auth', 'MongoDB', 'OpenAI API'],
-    imageHint: 'Chat interface with sentiment-aware responses',
-    github: 'https://github.com/suraj-kumar1-8/Mental-health-chatbot',
-    demo: '#',
-    challenges: [
-      'Implementing secure JWT authentication while maintaining smooth UX',
-      'Optimizing API calls to OpenAI to reduce latency and costs',
-      'Designing intuitive UI for sensitive mental health conversations'
-    ],
-    learnings: [
-      'Learned to balance user privacy with helpful AI assistance',
-      'Gained experience in sentiment analysis and conversation flow design',
-      'Improved understanding of secure authentication patterns'
-    ]
-  },
-  {
-    title: 'AICTE Curriculum Portal',
-    category: 'Full Stack',
-    desc: 'The AICTE Curriculum Portal offers structured syllabi, course content, and guidelines for engineering, management, and diploma programs, helping colleges align their curriculum with industry requirements and modern academic standards.',
-    problem: 'Many technical institutions follow outdated or inconsistent syllabi, creating a gap between academic learning and industry requirements. This leads to skill mismatches, reduced employability, and lack of uniformity in technical education.',
-    architecture: 'A full-stack web application built with React for the frontend, Node.js/Express for the backend API, MongoDB for storing curriculum data, and JWT for secure admin authentication. The portal features a user-friendly interface for browsing syllabi and an admin dashboard for managing content.',
-    tags: ['React', 'Express', 'MongoDB', 'JWT'],
-    imageHint: 'Curriculum browsing interface with admin dashboard',
-    github: 'https://github.com/suraj-kumar1-8/AICTE_Curriculum_Portal',
-    demo: '#',
-    challenges: [
-      'Designing a flexible data model to accommodate various course structures and content types',
-      'Implementing secure JWT-based authentication for admin users while ensuring a seamless content management experience',
-      'Creating an intuitive UI that allows students to easily navigate and understand complex syllabi'
-    ],
-    learnings: [
-      'Gained experience in designing scalable data models for educational content',
-      'Learned best practices for implementing secure authentication in content management systems',
-      'Improved skills in UI/UX design for educational platforms to enhance user engagement'
-    ]
-  },
-  {
-    title: 'DEKHOINIDA - Heritage & Culture Portal',
-    category: 'Frontend',
-    desc: 'A platform that showcases the rich heritage and culture of India through interactive content, virtual tours and educational resources.',
-    problem: 'Many people, especially younger generations, are disconnected from the rich heritage and culture of India due to lack of engaging platforms that make learning about it accessible and enjoyable.',
-    architecture: 'DEKHOINDIA uses a 3-tier web architecture where the frontend (HTML, CSS, JavaScript) provides the user interface, the backend (PHP) processes requests and handles logic, and the MySQL database stores state-wise heritage and culture data. The portal features interactive maps, virtual tours and multimedia content to engage users in exploring India’s diverse heritage.',
-    tags: ['PHP', 'MySQL', 'JavaScript', 'HTML', 'CSS'],
-    imageHint: 'Interactive portal showcasing India’s heritage and culture',
-    github: 'https://github.com/suraj-kumar1-8/INDIAN-HERITAGE',
-    demo: '#',
-    challenges: [
-      'Designing an engaging UI that effectively showcases the diversity of India’s heritage while remaining user-friendly',
-      'Optimizing the backend to handle multimedia content and interactive features without performance issues',
-      'Ensuring the accuracy and authenticity of the heritage information presented on the portal'
-    ],
-    learnings: [
-      'Gained experience in full-stack web development using PHP and MySQL',
-      'Learned how to design and implement interactive features that enhance user engagement',
-      'Improved skills in content curation and presentation for educational platforms'
-    ]
-  },
-  {
-    title: 'Developer Productivity Hub',
-    category: 'Full Stack',
-    desc: 'Centralized dashboard that brings together GitHub activity, LeetCode progress and deployment status into a single, focused view.',
-    problem: 'Engineers often juggle multiple tools and dashboards, making it hard to quickly understand personal progress, deployment health and outstanding work at a glance.',
-    architecture: 'Backend built with Node.js/Express exposing REST APIs, MongoDB for storing activity snapshots, JWT-based authentication layer, and integrations with GitHub, LeetCode and a lightweight AWS deployment monitor.',
-    tags: ['React', 'Express', 'MongoDB', 'JWT', 'AWS'],
-    imageHint: 'Unified dashboard for coding activity and deployments',
+    problem: 'Users often struggle to find quick answers about AICT regulations, leading to confusion and delays. A dedicated chatbot system can provide instant, accurate information.',
+    architecture: 'Built with MongoDB for storing regulation data, Express.js for API endpoints, React for the user interface, and Node.js for backend logic. Integrates intelligent chatbot logic to understand user queries and provide relevant responses.',
+    tags: ['MongoDB', 'Express.js', 'React', 'Node.js'],
+    imageHint: 'Chatbot interface for AICT regulations',
     github: '#',
     demo: '#',
     challenges: [
-      'Designing a data model that can aggregate activity from multiple external services',
-      'Implementing robust JWT authentication across the dashboard and APIs',
-      'Handling rate limits and failures gracefully when calling third‑party APIs'
+      'Designing an accurate regulation database that covers all AICT guidelines',
+      'Implementing NLP-based query understanding for accurate responses',
+      'Creating a user-friendly chat interface for easy information retrieval'
     ],
     learnings: [
-      'Strengthened understanding of backend integration patterns with external developer tools',
-      'Gained experience securing APIs and dashboards with JWT and role-based checks',
-      'Learned to design a UI that surfaces only the most important metrics without noise'
+      'Gained experience in building chatbot systems with natural language processing',
+      'Learned to structure and manage large regulatory datasets',
+      'Improved skills in creating effective conversational user interfaces'
     ]
   },
   {
-    title: 'AI Code Review System',
-    desc: 'Intelligent code analysis system that reviews code and suggests improvements using rule-based logic and pattern recognition.',
-    category: 'AI',
-    problem: 'Developers spend significant time on manual code reviews, which can be subjective and time-consuming. Automated code analysis helps catch common issues, enforce best practices, and improve code quality.',
-    architecture: 'Built with React frontend for the code editor interface, Node.js/Express backend for processing code analysis, and MongoDB for storing review history. Uses intelligent rule-based logic to detect patterns and suggest improvements.',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB'],
-    imageHint: 'Code review interface with AI suggestions',
-    github: 'https://github.com/suraj-kumar1-8/ai-code-review',
+    title: 'CloudShare – Cloud File Sharing Platform',
+    desc: 'A cloud-based file sharing platform where users can upload and manage files securely. The project uses AWS services and Docker for deployment and storage.',
+    category: 'Full Stack',
+    problem: 'Users need a secure, scalable solution to upload, store, and share files with others without worrying about data security or storage limitations.',
+    architecture: 'Frontend built with React, backend with Node.js/Express, MongoDB for metadata storage, AWS S3 for file storage, AWS IAM for security, and Docker for containerized deployment and scaling.',
+    tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'AWS', 'Docker'],
+    imageHint: 'Cloud file management dashboard with sharing options',
+    github: '#',
     demo: '#',
     challenges: [
-      'Parsing and analyzing different programming languages accurately',
-      'Developing intelligent rules that provide meaningful and actionable feedback',
-      'Balancing analysis depth with performance for large codebases'
+      'Implementing secure file upload and storage with AWS S3',
+      'Managing user permissions and access controls efficiently',
+      'Optimizing file transfer speeds and handling large file uploads'
     ],
     learnings: [
-      'Gained experience in code parsing and AST (Abstract Syntax Tree) analysis',
-      'Learned how to design intelligent rule engines for pattern detection',
-      'Improved understanding of backend processing for computationally intensive tasks'
+      'Gained hands-on experience with AWS services including S3, IAM, and EC2',
+      'Learned containerization and deployment strategies using Docker',
+      'Improved understanding of secure file handling and access management'
+    ]
+  },
+  {
+    title: 'Dekho India – Cultural Portal',
+    desc: 'A cultural and heritage portal that showcases information about different states of India.',
+    category: 'Full Stack',
+    problem: 'Many people lack accessible platforms to learn about Indias diverse cultural heritage and regional information in an engaging way.',
+    architecture: 'Frontend built with HTML, CSS, JavaScript, and Tailwind CSS. Backend developed with PHP for server-side logic. MySQL database stores comprehensive information about Indian states, culture, heritage, and attractions.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'MySQL'],
+    imageHint: 'Cultural portal showcasing Indian heritage and states',
+    github: '#',
+    demo: '#',
+    challenges: [
+      'Organizing vast amounts of cultural and heritage data efficiently',
+      'Creating engaging UI/UX to make cultural information compelling',
+      'Ensuring accurate and authentic representation of diverse Indian cultures'
+    ],
+    learnings: [
+      'Gained experience in full-stack development with PHP and MySQL',
+      'Learned content curation and presentation strategies',
+      'Improved skills in creating responsive, engaging cultural interfaces'
+    ]
+  },
+  {
+    title: 'Developer Portfolio Website',
+    desc: 'A personal portfolio website showcasing projects, skills, certifications and achievements. The site is deployed online and built using modern frontend technologies.',
+    category: 'Full Stack',
+    problem: 'Developers need an impressive online presence to showcase their work, skills, and accomplishments to potential employers and collaborators.',
+    architecture: 'Built entirely with React for the frontend, utilizing Tailwind CSS for responsive design, JavaScript for interactivity, and modern animation libraries. Deployed on Vercel for fast, reliable hosting.',
+    tags: ['React', 'Tailwind CSS', 'JavaScript'],
+    imageHint: 'Personal portfolio displaying projects and skills',
+    github: 'https://github.com/suraj-kumar1-8/portfolio',
+    demo: '#',
+    challenges: [
+      'Designing a visually appealing portfolio that stands out',
+      'Optimizing performance for smooth animations and fast loading',
+      'Making the portfolio responsive across all device sizes'
+    ],
+    learnings: [
+      'Gained experience in modern React development and component design',
+      'Learned advanced CSS and animation techniques with Tailwind CSS',
+      'Improved skills in creating user-focused portfolio presentations'
+    ]
+  },
+  {
+    title: 'AI Chatbot System',
+    desc: 'An AI-powered chatbot built using MERN stack and Python that can interact with users and answer queries intelligently.',
+    category: 'AI',
+    problem: 'Traditional chatbots are limited in their ability to understand complex queries and provide intelligent responses. An AI-powered system can learn and adapt better.',
+    architecture: 'Frontend built with React for the chat interface, Node.js/Express for API handling, MongoDB for conversation history and user data. Python backend for AI/ML processing and intelligent response generation using NLP models.',
+    tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Python', 'AI Integration'],
+    imageHint: 'AI chatbot conversation interface',
+    github: '#',
+    demo: '#',
+    challenges: [
+      'Implementing advanced NLP models for better query understanding',
+      'Managing real-time conversations with low latency responses',
+      'Training AI models on domain-specific data for accurate responses'
+    ],
+    learnings: [
+      'Gained experience integrating AI and ML models with full-stack applications',
+      'Learned NLP concepts and conversation flow management',
+      'Improved understanding of real-time communication systems'
     ]
   }
 ]
 
-const categories = ['All Projects', 'Full Stack', 'Frontend', 'AI']
+const categories = ['All Projects', 'Full Stack', 'AI']
 
 export default function Projects() {
   const [ref, inView] = useInView(0.2)

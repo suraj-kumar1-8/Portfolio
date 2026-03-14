@@ -54,6 +54,20 @@ const certifications = [
     year: '2022',
     description: 'Core JavaScript concepts and algorithmic problem-solving',
     certificateUrl: '#'
+  },
+  {
+    title: 'Summer Training Certification',
+    organization: 'CK Summer Training College / CAC Pathshala',
+    year: '2024',
+    description: 'Completed summer training where I learned core programming and problem solving concepts including DSA and UPS related programming fundamentals.',
+    certificateUrl: '#'
+  },
+  {
+    title: 'Community Development Project (CDP)',
+    organization: 'College Community Development Program',
+    year: '2024',
+    description: 'Participated in a community development project focused on plant-based environmental initiatives and teamwork for community improvement.',
+    certificateUrl: '#'
   }
 ]
 
