@@ -99,7 +99,7 @@ export default function Navbar() {
                 {it.id === 'achievements' && (
                   <li className="relative pl-1.5 ml-1.5">
                     <motion.a
-                      href="/resume.pdf"
+                      href="/suraj.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.02 }}

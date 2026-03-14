@@ -120,7 +120,7 @@ export default function Hero() {
               className="flex flex-col sm:flex-row sm:items-center gap-5 pt-3"
             >
               <motion.a
-                href="/resume.pdf"
+                href="/suraj kumar.pdf"
                 download
                 whileHover={{ y: HOVER_EFFECTS.lift, scale: HOVER_EFFECTS.scale }}
                 whileTap={{ scale: 0.98 }}
