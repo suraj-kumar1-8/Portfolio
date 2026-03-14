@@ -52,7 +52,7 @@ export default function Contact() {
           user_name: formData.user_name,
           user_email: formData.user_email,
           message: formData.message,
-          to_email: 'your-email@example.com' // Replace with your email
+          to_email: 'surajkumargupta7491@gmai.com' // Replace with your email
         },
         'YOUR_PUBLIC_KEY' // Replace with your public key
       )
@@ -82,21 +82,21 @@ export default function Contact() {
       icon: FaLinkedin,
       label: 'LinkedIn',
       value: 'Suraj Kumar',
-      link: 'https://linkedin.com/in/suraj-kumar-8a',
+      link: 'https://www.linkedin.com/in/suraj-kumar2111/',
       color: 'text-blue-400'
     },
     {
       icon: FaEnvelope,
       label: 'Email',
-      value: 'your-email@example.com',
-      link: 'mailto:your-email@example.com',
+      value: 'surajkumargupta7491@gmai.com',
+      link: 'mailto:surajkumargupta7491@gmai.com',
       color: 'text-red-400'
     },
     {
       icon: FaPhone,
       label: 'Phone',
-      value: '+91 XXXXXXXXXX',
-      link: 'tel:+91XXXXXXXXXX',
+      value: '+91 6206239371',
+      link: 'tel:+916206239371',
       color: 'text-green-400'
     }
   ]

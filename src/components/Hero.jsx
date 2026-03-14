@@ -158,7 +158,7 @@ export default function Hero() {
                   },
                   { 
                     Icon: FaEnvelope, 
-                    href: 'mailto:surajkumargupta7491@gmail.com',
+                    href: 'mailto:surajkumargupta7491@gmai.com',
                     color: 'text-slate-300',
                     hoverColor: 'text-white',
                     glowColor: 'bg-gradient-to-tr from-purple-500/30 via-sky-400/30 to-emerald-400/30'

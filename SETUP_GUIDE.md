@@ -91,7 +91,7 @@ const contactInfo = [
     icon: FaLinkedin,
     label: "LinkedIn",
     value: "Your Name",
-    link: "https://linkedin.com/in/your-profile",
+    link: "https://www.linkedin.com/in/suraj-kumar2111/",
     color: "text-blue-400",
   },
   {
@@ -104,8 +104,8 @@ const contactInfo = [
   {
     icon: FaPhone,
     label: "Phone",
-    value: "+91 XXXXXXXXXX",
-    link: "tel:+91XXXXXXXXXX",
+    value: "+91 6206239371",
+    link: "tel:+916206239371",
     color: "text-green-400",
   },
 ];

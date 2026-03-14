@@ -15,7 +15,7 @@ export default function Footer() {
     },
     { 
       Icon: FaLinkedin, 
-      href: 'https://linkedin.com', 
+      href: 'https://www.linkedin.com/in/suraj-kumar2111/', 
       label: 'LinkedIn',
       color: 'text-[#0A66C2]',
       hoverColor: 'hover:text-[#0A66C2]',
@@ -23,7 +23,7 @@ export default function Footer() {
     },
     { 
       Icon: SiLeetcode, 
-      href: 'https://leetcode.com', 
+      href: 'https://leetcode.com/u/HtVI08YLj0/', 
       label: 'LeetCode',
       color: 'text-[#FFA116]',
       hoverColor: 'hover:text-[#FFA116]',

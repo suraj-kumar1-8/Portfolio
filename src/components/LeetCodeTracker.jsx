@@ -66,7 +66,7 @@ export default function LeetCodeTracker() {
             </p>
           </div>
           <button
-            onClick={() => window.open('https://leetcode.com', '_blank')}
+            onClick={() => window.open('https://leetcode.com/u/HtVI08YLj0/', '_blank')}
             className="mt-6 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-amber-400 to-emerald-400 text-slate-900 shadow-lg shadow-amber-500/20"
           >
             View LeetCode Profile
