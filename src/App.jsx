@@ -10,7 +10,7 @@ import SystemDesign from './components/SystemDesign'
 import CurrentlyLearning from './components/CurrentlyLearning'
 import PerformanceBadges from './components/PerformanceBadges'
 import Projects from './components/Projects'
-import Experience from './components/Experience'
+import Certifications from './components/Certifications'
 import Achievements from './components/Achievements'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -73,8 +73,8 @@ export default function App() {
           <Projects />
         </section>
 
-        <section id="experience" className="pt-20 pb-16 scroll-mt-20">
-          <Experience />
+        <section id="certifications" className="pt-20 pb-16 scroll-mt-20">
+          <Certifications />
         </section>
 
         <section id="achievements" className="pt-20 pb-16 scroll-mt-20">

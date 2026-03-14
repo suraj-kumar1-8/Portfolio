@@ -1,134 +1,330 @@
 import React, { useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import emailjs from 'emailjs-com'
+import emailjs from '@emailjs/browser'
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa'
 import SectionHeading from './common/SectionHeading'
+import useInView from '../hooks/useInView'
+import { ANIMATION_DURATIONS, ANIMATION_DELAYS, HOVER_EFFECTS } from '../constants/animations'
 
 export default function Contact() {
+  const [ref, inView] = useInView(0.2)
   const formRef = useRef(null)
   const [status, setStatus] = useState('idle') // idle | sending | success | error
+  const [formData, setFormData] = useState({
+    user_name: '',
+    user_email: '',
+    message: ''
+  })
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (status === 'sending') return
+
+    // Validate form
+    if (!formData.user_name || !formData.user_email || !formData.message) {
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 4000)
+      return
+    }
+
     setStatus('sending')
 
     try {
-      // TODO: Replace with your own EmailJS config
-      // Create a service, template and public key at https://dashboard.emailjs.com
-      const SERVICE_ID = 'service_te9xebf'
-      const TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
-      const PUBLIC_KEY = 'EXqvHgKpKmKUsXj0o'
+      // Initialize EmailJS (only once)
+      if (!window.emailjsInitialized) {
+        emailjs.init('YOUR_PUBLIC_KEY') // Replace with your public key
+        window.emailjsInitialized = true
+      }
 
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      // Send email using emailjs.send
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Replace with your service ID
+        'YOUR_TEMPLATE_ID', // Replace with your template ID
+        {
+          user_name: formData.user_name,
+          user_email: formData.user_email,
+          message: formData.message,
+          to_email: 'your-email@example.com' // Replace with your email
+        },
+        'YOUR_PUBLIC_KEY' // Replace with your public key
+      )
+
       setStatus('success')
-      formRef.current.reset()
+      setFormData({ user_name: '', user_email: '', message: '' })
+      if (formRef.current) {
+        formRef.current.reset()
+      }
       setTimeout(() => setStatus('idle'), 4000)
     } catch (err) {
-      console.error('EmailJS error', err)
+      console.error('EmailJS error:', err)
       setStatus('error')
       setTimeout(() => setStatus('idle'), 4000)
     }
   }
 
+  const contactInfo = [
+    {
+      icon: FaGithub,
+      label: 'GitHub',
+      value: '@suraj-kumar1-8',
+      link: 'https://github.com/suraj-kumar1-8',
+      color: 'text-slate-300'
+    },
+    {
+      icon: FaLinkedin,
+      label: 'LinkedIn',
+      value: 'Suraj Kumar',
+      link: 'https://linkedin.com/in/suraj-kumar-8a',
+      color: 'text-blue-400'
+    },
+    {
+      icon: FaEnvelope,
+      label: 'Email',
+      value: 'your-email@example.com',
+      link: 'mailto:your-email@example.com',
+      color: 'text-red-400'
+    },
+    {
+      icon: FaPhone,
+      label: 'Phone',
+      value: '+91 XXXXXXXXXX',
+      link: 'tel:+91XXXXXXXXXX',
+      color: 'text-green-400'
+    }
+  ]
+
   return (
-    <section aria-label="Contact form" className="max-w-2xl mx-auto">
+    <section ref={ref} aria-label="Contact section" className="relative">
       <SectionHeading
         title="Let's Connect"
-        subtitle="Open to full‑stack roles, internships and collaborations around modern web products"
+        subtitle="Have a question or want to collaborate? I'd love to hear from you."
       />
-      <div className="glass-card p-6 md:p-8 rounded-2xl border border-white/5 shadow-lg shadow-black/10">
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="mt-8 space-y-5"
+
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: ANIMATION_DURATIONS.entrance }}
+          className="grid grid-cols-1 lg:grid-cols-5 gap-8"
         >
-          <div className="relative">
-            <input
-              type="text"
-              name="from_name"
-              required
-              className="peer w-full rounded-xl border border-white/10 bg-slate-900/60 px-3 py-3 text-sm text-slate-100 placeholder-transparent focus:border-sky-400 focus:outline-none focus:ring-0"
-              placeholder="Your name"
-            />
-            <label className="pointer-events-none absolute left-3 top-3 text-xs text-slate-400 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-focus:-top-2 peer-focus:left-2 peer-focus:text-[11px] peer-focus:text-sky-400 bg-slate-950 px-1 rounded">
-              Name
-            </label>
-          </div>
+          {/* Contact Form - Left Side (wider) */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+            transition={{ duration: ANIMATION_DURATIONS.entrance, delay: ANIMATION_DELAYS.stagger }}
+            className="lg:col-span-3"
+          >
+            <div className="glass-card rounded-2xl p-6 md:p-8 border border-white/5 hover:border-white/10 transition-all duration-300">
+              <h3 className="text-2xl font-bold text-slate-100 mb-6">Send me a Message</h3>
 
-          <div className="relative">
-            <input
-              type="email"
-              name="reply_to"
-              required
-              className="peer w-full rounded-xl border border-white/10 bg-slate-900/60 px-3 py-3 text-sm text-slate-100 placeholder-transparent focus:border-sky-400 focus:outline-none focus:ring-0"
-              placeholder="Your email"
-            />
-            <label className="pointer-events-none absolute left-3 top-3 text-xs text-slate-400 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-focus:-top-2 peer-focus:left-2 peer-focus:text-[11px] peer-focus:text-sky-400 bg-slate-950 px-1 rounded">
-              Email
-            </label>
-          </div>
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="space-y-5"
+              >
+                {/* Name Field */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  transition={{ delay: ANIMATION_DELAYS.stagger * 2 }}
+                  className="relative"
+                >
+                  <input
+                    type="text"
+                    name="user_name"
+                    value={formData.user_name}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Your name"
+                    className="peer w-full rounded-xl border border-white/10 bg-slate-900/60 px-4 py-3 text-sm text-slate-100 placeholder-transparent focus:border-sky-400 focus:outline-none focus:ring-0 transition-colors"
+                  />
+                  <label className="pointer-events-none absolute left-4 top-3 text-xs text-slate-400 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-focus:-top-2 peer-focus:left-3 peer-focus:text-[11px] peer-focus:text-sky-400 bg-slate-950 px-1">
+                    Name
+                  </label>
+                </motion.div>
 
-          <div className="relative">
-            <input
-              type="text"
-              name="subject"
-              required
-              className="peer w-full rounded-xl border border-white/10 bg-slate-900/60 px-3 py-3 text-sm text-slate-100 placeholder-transparent focus:border-sky-400 focus:outline-none focus:ring-0"
-              placeholder="Subject"
-            />
-            <label className="pointer-events-none absolute left-3 top-3 text-xs text-slate-400 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-focus:-top-2 peer-focus:left-2 peer-focus:text-[11px] peer-focus:text-sky-400 bg-slate-950 px-1 rounded">
-              Subject
-            </label>
-          </div>
+                {/* Email Field */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  transition={{ delay: ANIMATION_DELAYS.stagger * 3 }}
+                  className="relative"
+                >
+                  <input
+                    type="email"
+                    name="user_email"
+                    value={formData.user_email}
+                    onChange={handleInputChange}
+                    required
+                    placeholder="Your email"
+                    className="peer w-full rounded-xl border border-white/10 bg-slate-900/60 px-4 py-3 text-sm text-slate-100 placeholder-transparent focus:border-sky-400 focus:outline-none focus:ring-0 transition-colors"
+                  />
+                  <label className="pointer-events-none absolute left-4 top-3 text-xs text-slate-400 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-focus:-top-2 peer-focus:left-3 peer-focus:text-[11px] peer-focus:text-sky-400 bg-slate-950 px-1">
+                    Email
+                  </label>
+                </motion.div>
 
-          <div className="relative">
-            <textarea
-              name="message"
-              rows={5}
-              required
-              className="peer w-full rounded-xl border border-white/10 bg-slate-900/60 px-3 py-3 text-sm text-slate-100 placeholder-transparent focus:border-sky-400 focus:outline-none focus:ring-0 resize-none"
-              placeholder="Message"
-            ></textarea>
-            <label className="pointer-events-none absolute left-3 top-3 text-xs text-slate-400 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-focus:-top-2 peer-focus:left-2 peer-focus:text-[11px] peer-focus:text-sky-400 bg-slate-950 px-1 rounded">
-              Message
-            </label>
-          </div>
+                {/* Message Field */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  transition={{ delay: ANIMATION_DELAYS.stagger * 4 }}
+                  className="relative"
+                >
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={5}
+                    required
+                    placeholder="Your message"
+                    className="peer w-full rounded-xl border border-white/10 bg-slate-900/60 px-4 py-3 text-sm text-slate-100 placeholder-transparent focus:border-sky-400 focus:outline-none focus:ring-0 resize-none transition-colors"
+                  />
+                  <label className="pointer-events-none absolute left-4 top-3 text-xs text-slate-400 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-xs peer-focus:-top-2 peer-focus:left-3 peer-focus:text-[11px] peer-focus:text-sky-400 bg-slate-950 px-1">
+                    Message
+                  </label>
+                </motion.div>
 
-          <div className="flex justify-center mt-6">
-            <motion.button
-              type="submit"
-              whileHover={{ y: -1, scale: 1.01 }}
-              whileTap={{ scale: 0.98 }}
-              disabled={status === 'sending'}
-              className="relative inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-slate-950 bg-gradient-to-r from-purple-500 via-sky-400 to-emerald-400 shadow-lg shadow-sky-500/30 disabled:opacity-60 disabled:cursor-not-allowed"
-            >
-              {status === 'sending' ? 'Sending…' : 'Send Message'}
-            </motion.button>
-          </div>
-        </form>
+                {/* Submit Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  transition={{ delay: ANIMATION_DELAYS.stagger * 5 }}
+                >
+                  <motion.button
+                    type="submit"
+                    whileHover={{ y: -2, scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    disabled={status === 'sending'}
+                    className="w-full relative inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-sm font-semibold text-slate-950 bg-gradient-to-r from-purple-500 via-sky-400 to-emerald-400 shadow-lg shadow-sky-500/30 hover:shadow-xl hover:shadow-sky-500/40 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300"
+                  >
+                    {status === 'sending' ? (
+                      <>
+                        <span className="inline-block animate-spin mr-2">⚙️</span>
+                        Sending…
+                      </>
+                    ) : (
+                      'Send Message'
+                    )}
+                  </motion.button>
+                </motion.div>
 
-        <AnimatePresence>
-          {status === 'success' && (
+                {/* Status Messages */}
+                <AnimatePresence>
+                  {status === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: ANIMATION_DURATIONS.standard }}
+                      className="rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300 flex items-center gap-2"
+                    >
+                      <span>✓</span>
+                      <span>Message sent successfully! I'll get back to you shortly.</span>
+                    </motion.div>
+                  )}
+                  {status === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: ANIMATION_DURATIONS.standard }}
+                      className="rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-sm text-rose-300 flex items-center gap-2"
+                    >
+                      <span>✕</span>
+                      <span>Something went wrong. Please try again or reach out via email.</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </form>
+            </div>
+          </motion.div>
+
+          {/* Contact Info - Right Side */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+            transition={{ duration: ANIMATION_DURATIONS.entrance, delay: ANIMATION_DELAYS.stagger * 2 }}
+            className="lg:col-span-2 flex flex-col gap-4"
+          >
+            {contactInfo.map((info, idx) => {
+              const Icon = info.icon
+              return (
+                <motion.a
+                  key={info.label}
+                  href={info.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                  transition={{
+                    delay: idx * ANIMATION_DELAYS.stagger,
+                    duration: ANIMATION_DURATIONS.entrance
+                  }}
+                  whileHover={{ x: 4 }}
+                  className="glass-card rounded-xl p-5 md:p-6 border border-white/5 hover:border-white/10 transition-all duration-300 group"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="p-3 rounded-lg bg-gradient-to-br from-purple-500/20 to-sky-400/20 group-hover:from-purple-500/30 group-hover:to-sky-400/30 transition-all">
+                      <Icon className={`text-lg ${info.color}`} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">
+                        {info.label}
+                      </p>
+                      <p className="text-sm md:text-base font-semibold text-slate-100 truncate group-hover:text-slate-50 transition-colors">
+                        {info.value}
+                      </p>
+                    </div>
+                    <div className="flex-shrink-0 text-slate-600 group-hover:text-sky-400 transition-colors">
+                      ↗
+                    </div>
+                  </div>
+                </motion.a>
+              )
+            })}
+
+            {/* Quick Links */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 16 }}
-              className="mt-4 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{
+                delay: contactInfo.length * ANIMATION_DELAYS.stagger,
+                duration: ANIMATION_DURATIONS.entrance
+              }}
+              className="mt-4 glass-card rounded-xl p-5 md:p-6 border border-white/5"
             >
-              Message sent successfully. I&apos;ll get back to you shortly.
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">
+                Quick Links
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { label: 'Resume', href: '#' },
+                  { label: 'Portfolio', href: '#' },
+                  { label: 'Blog', href: '#' }
+                ].map((link) => (
+                  <motion.a
+                    key={link.label}
+                    href={link.href}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex px-3 py-1.5 rounded-lg text-xs font-medium bg-purple-600/20 border border-purple-500/30 text-purple-300 hover:border-purple-400/50 hover:text-purple-200 transition-all"
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+              </div>
             </motion.div>
-          )}
-          {status === 'error' && (
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 16 }}
-              className="mt-4 rounded-xl border border-rose-500/40 bg-rose-500/10 px-3 py-2 text-xs text-rose-300"
-            >
-              Something went wrong while sending. Please try again in a moment.
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )
