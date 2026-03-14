@@ -120,8 +120,9 @@ export default function Hero() {
               className="flex flex-col sm:flex-row sm:items-center gap-5 pt-3"
             >
               <motion.a
-                href="/suraj kumar.pdf"
-                download
+                href="/suraj.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ y: HOVER_EFFECTS.lift, scale: HOVER_EFFECTS.scale }}
                 whileTap={{ scale: 0.98 }}
                 className="relative inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-slate-950 bg-gradient-to-r from-purple-500 via-sky-400 to-emerald-400 shadow-lg shadow-sky-500/40 transition-all duration-300"
