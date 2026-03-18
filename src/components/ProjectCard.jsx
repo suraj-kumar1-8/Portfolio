@@ -57,6 +57,7 @@ export default function ProjectCard({ title, desc, tags, github, demo, imageHint
               href={github}
               target="_blank"
               rel="noreferrer"
+              onClick={(event) => event.stopPropagation()}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="relative inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900/70 border border-white/10 text-slate-100 hover:text-white hover:border-sky-400 hover:bg-slate-800 transition-all duration-300 group"
@@ -68,6 +69,11 @@ export default function ProjectCard({ title, desc, tags, github, demo, imageHint
               href={demo}
               target="_blank"
               rel="noreferrer"
+              onClick={(event) => {
+                event.preventDefault()
+                event.stopPropagation()
+                onCaseStudyClick()
+              }}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="relative inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900/70 border border-white/10 text-slate-100 hover:text-white hover:border-emerald-400 hover:bg-slate-800 transition-all duration-300 group"

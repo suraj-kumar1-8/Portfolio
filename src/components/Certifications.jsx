@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { createPortal } from 'react-dom'
 import { FaExternalLinkAlt, FaTimes } from 'react-icons/fa'
 import useInView from '../hooks/useInView'
 import SectionHeading from './common/SectionHeading'
@@ -11,84 +12,112 @@ const certifications = [
     organization: 'Udemy',
     year: '2024',
     description: 'Comprehensive course covering MERN stack, authentication, and deployment',
-    certificateUrl: '#'
+    certificateUrl: '#',
+    certificateImage: '/certificate-placeholder.svg'
   },
   {
     title: 'Data Structures & Algorithms',
     organization: 'CSC Pathshala',
     year: '2024',
     description: 'In-depth training on DSA patterns and problem-solving techniques',
-    certificateUrl: '#'
+    certificateUrl: '#',
+    certificateImage: '/certificate-placeholder.svg'
   },
   {
     title: 'React Advanced Patterns',
     organization: 'Frontend Masters',
     year: '2023',
     description: 'Advanced React concepts, hooks, and performance optimization',
-    certificateUrl: '#'
+    certificateUrl: '#',
+    certificateImage: '/certificate-placeholder.svg'
   },
   {
     title: 'AWS Solutions Architect Associate',
     organization: 'Amazon Web Services',
     year: '2023',
     description: 'Cloud architecture, EC2, S3, and AWS deployment strategies',
-    certificateUrl: '#'
+    certificateUrl: '#',
+    certificateImage: '/certificate-placeholder.svg'
   },
   {
     title: 'Node.js & Express Masterclass',
     organization: 'Udemy',
     year: '2023',
     description: 'Backend development with Node.js, Express, and REST APIs',
-    certificateUrl: '#'
+    certificateUrl: '#',
+    certificateImage: '/certificate-placeholder.svg'
   },
   {
     title: 'MongoDB Complete Guide',
     organization: 'Udemy',
     year: '2023',
     description: 'Database design, aggregations, and optimization',
-    certificateUrl: '#'
+    certificateUrl: '#',
+    certificateImage: '/certificate-placeholder.svg'
   },
   {
     title: 'JavaScript Algorithms & DS',
     organization: 'The Complete JavaScript Course',
     year: '2022',
     description: 'Core JavaScript concepts and algorithmic problem-solving',
-    certificateUrl: '#'
+    certificateUrl: '#',
+    certificateImage: '/certificate-placeholder.svg'
   },
   {
     title: 'Summer Training Certification',
     organization: 'CK Summer Training College / CAC Pathshala',
     year: '2024',
     description: 'Completed summer training where I learned core programming and problem solving concepts including DSA and UPS related programming fundamentals.',
-    certificateUrl: '#'
+    certificateUrl: '#',
+    certificateImage: '/certificate-placeholder.svg'
   },
   {
     title: 'Community Development Project (CDP)',
     organization: 'College Community Development Program',
     year: '2024',
     description: 'Participated in a community development project focused on plant-based environmental initiatives and teamwork for community improvement.',
-    certificateUrl: '#'
+    certificateUrl: '#',
+    certificateImage: '/certificate-placeholder.svg'
   }
 ]
 
 export default function Certifications() {
   const [ref, inView] = useInView(0.2)
-  const [selectedCert, setSelectedCert] = useState(null)
+  const [selectedCertificate, setSelectedCertificate] = useState(null)
+
+  useEffect(() => {
+    if (!selectedCertificate) return undefined
+    document.body.style.overflow = 'hidden'
+
+    const handleEsc = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedCertificate(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleEsc)
+
+    return () => {
+      window.removeEventListener('keydown', handleEsc)
+      document.body.style.overflow = 'auto'
+    }
+  }, [selectedCertificate])
 
   const handleViewCertificate = (cert) => {
-    setSelectedCert(cert)
+    setSelectedCertificate(cert)
   }
 
   const handleCloseCertificate = () => {
-    setSelectedCert(null)
+    setSelectedCertificate(null)
   }
 
   return (
-    <section ref={ref} aria-label="Certifications" className="relative">
-      <SectionHeading
-        title="Certifications"
-        subtitle="Professional development and continuous learning credentials"
-      />
+    <>
+      <section ref={ref} aria-label="Certifications" className="relative">
+        <SectionHeading
+          title="Certifications"
+          subtitle="Professional development and continuous learning credentials"
+        />
 
       <div className="max-w-5xl mx-auto">
         <motion.div
@@ -154,85 +183,63 @@ export default function Certifications() {
         </motion.div>
       </div>
 
-      {/* Certificate Modal */}
-      <AnimatePresence>
-        {selectedCert && (
+      </section>
+
+      {selectedCertificate && createPortal(
+        <AnimatePresence>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleCloseCertificate}
-            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/70 flex items-center justify-center z-[999] p-4"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{ duration: ANIMATION_DURATIONS.entrance }}
               onClick={(e) => e.stopPropagation()}
-              className="glass-card rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-auto border border-white/10 relative"
+              className="w-[90%] max-w-3xl max-h-[90vh] overflow-y-auto rounded-xl glass-card border border-white/10 relative"
             >
-              {/* Close Button */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+              <button
+                type="button"
                 onClick={handleCloseCertificate}
                 className="absolute top-4 right-4 z-10 p-2 rounded-lg bg-slate-900/80 border border-white/10 text-slate-300 hover:text-white hover:border-white/20 transition-all"
+                aria-label="Close certificate preview"
               >
                 <FaTimes className="text-xl" />
-              </motion.button>
+              </button>
 
-              {/* Modal Content */}
-              <div className="p-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                >
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-2">
-                    {selectedCert.title}
-                  </h2>
-                  <p className="text-slate-400 mb-6">
-                    {selectedCert.organization} • {selectedCert.year}
-                  </p>
+              <div className="p-6 md:p-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-2 pr-10">
+                  {selectedCertificate.title}
+                </h2>
+                <p className="text-slate-400 mb-6">
+                  {selectedCertificate.organization} • {selectedCertificate.year}
+                </p>
 
-                  <div className="bg-slate-900/60 rounded-xl p-6 mb-6 border border-white/5 flex items-center justify-center min-h-80">
-                    <div className="text-center">
-                      <p className="text-slate-400 mb-4">Certificate Preview</p>
-                      <div className="w-24 h-24 mx-auto mb-4 rounded-lg bg-gradient-to-br from-purple-500/20 to-sky-400/20 flex items-center justify-center">
-                        <FaExternalLinkAlt className="text-4xl text-sky-400/50" />
-                      </div>
-                      <p className="text-xs text-slate-500">
-                        Click the button below to view the full certificate
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <motion.a
-                      href={selectedCert.certificateUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="flex-1 px-4 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-sky-500 text-white font-semibold text-center hover:shadow-lg hover:shadow-purple-500/30 transition-all"
-                    >
-                      Open Certificate
-                    </motion.a>
-                    <motion.button
-                      onClick={handleCloseCertificate}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="px-4 py-3 rounded-lg border border-white/10 text-slate-300 hover:text-slate-100 font-semibold hover:border-white/20 transition-all"
-                    >
-                      Close
-                    </motion.button>
-                  </div>
-                </motion.div>
+                <div className="bg-slate-900/60 rounded-xl p-3 border border-white/5">
+                  {(selectedCertificate.certificateImage || '').toLowerCase().endsWith('.pdf') ? (
+                    <iframe
+                      title={`${selectedCertificate.title} certificate preview`}
+                      src={selectedCertificate.certificateImage}
+                      className="w-full h-[70vh] rounded-lg border border-white/10"
+                    />
+                  ) : (
+                    <img
+                      src={selectedCertificate.certificateImage || '/certificate-placeholder.svg'}
+                      alt={`${selectedCertificate.title} certificate`}
+                      className="w-full h-auto rounded-lg"
+                    />
+                  )}
+                </div>
               </div>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </section>
+        </AnimatePresence>,
+        document.body
+      )}
+    </>
   )
 }

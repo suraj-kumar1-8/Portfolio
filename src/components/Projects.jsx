@@ -8,24 +8,24 @@ import { ANIMATION_DURATIONS, ANIMATION_DELAYS } from '../constants/animations'
 
 const projects = [
   {
-    title: 'AICT Regulation Bot',
-    desc: 'A chatbot-based system built using the MERN stack to help users quickly access AICT regulation-related information.',
+    title: 'AICTE Curriculum Portal',
+    desc: 'A comprehensive portal that provides students and educators with easy access to AICTE curriculum guidelines, course structures, and regulatory information.',
     category: 'Full Stack',
-    problem: 'Users often struggle to find quick answers about AICT regulations, leading to confusion and delays. A dedicated chatbot system can provide instant, accurate information.',
-    architecture: 'Built with MongoDB for storing regulation data, Express.js for API endpoints, React for the user interface, and Node.js for backend logic. Integrates intelligent chatbot logic to understand user queries and provide relevant responses.',
+    problem: 'Students and educators often struggle to find accurate and up-to-date information about AICTE curriculum requirements and guidelines, leading to confusion and inefficiency in academic planning.',
+    architecture: 'Frontend built with React for dynamic content rendering, Node.js/Express for backend API handling, MongoDB for storing curriculum data and user interactions. The portal features a searchable database of AICTE regulations, interactive course maps, and a chatbot for quick queries.',
     tags: ['MongoDB', 'Express.js', 'React', 'Node.js'],
-    imageHint: 'Chatbot interface for AICT regulations',
-    github: '#',
+    imageHint: 'Dashboard showcasing AICTE curriculum guidelines and interactive course maps',
+    github: 'https://github.com/suraj-kumar1-8/AICTE_Curriculum_Portal',
     demo: '#',
     challenges: [
-      'Designing an accurate regulation database that covers all AICT guidelines',
-      'Implementing NLP-based query understanding for accurate responses',
-      'Creating a user-friendly chat interface for easy information retrieval'
+      'Structuring and organizing complex regulatory information in an accessible way',
+      'Implementing an efficient search and filter system for curriculum data',
+      'Designing an intuitive UI that caters to both students and educators'
     ],
     learnings: [
-      'Gained experience in building chatbot systems with natural language processing',
-      'Learned to structure and manage large regulatory datasets',
-      'Improved skills in creating effective conversational user interfaces'
+      'Gained experience in full-stack development with a focus on educational platforms',
+      'Learned how to handle and present complex data structures effectively',
+      'Improved skills in creating user-friendly interfaces for information-heavy applications'
     ]
   },
   {
@@ -36,7 +36,7 @@ const projects = [
     architecture: 'Frontend built with React, backend with Node.js/Express, MongoDB for metadata storage, AWS S3 for file storage, AWS IAM for security, and Docker for containerized deployment and scaling.',
     tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'AWS', 'Docker'],
     imageHint: 'Cloud file management dashboard with sharing options',
-    github: '#',
+    github: 'https://github.com/suraj-kumar1-8/CloudShare-Cloud-File-Sharing-Platform',
     demo: '#',
     challenges: [
       'Implementing secure file upload and storage with AWS S3',
@@ -50,14 +50,14 @@ const projects = [
     ]
   },
   {
-    title: 'Dekho India – Cultural Portal',
+    title: 'DEKHOINDIA – Heritage & Cultural Portal',
     desc: 'A cultural and heritage portal that showcases information about different states of India.',
     category: 'Full Stack',
     problem: 'Many people lack accessible platforms to learn about Indias diverse cultural heritage and regional information in an engaging way.',
     architecture: 'Frontend built with HTML, CSS, JavaScript, and Tailwind CSS. Backend developed with PHP for server-side logic. MySQL database stores comprehensive information about Indian states, culture, heritage, and attractions.',
     tags: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'MySQL'],
     imageHint: 'Cultural portal showcasing Indian heritage and states',
-    github: '#',
+    github: 'https://github.com/suraj-kumar1-8/INDIAN-HERITAGE',
     demo: '#',
     challenges: [
       'Organizing vast amounts of cultural and heritage data efficiently',
@@ -79,7 +79,7 @@ const projects = [
     tags: ['React', 'Tailwind CSS', 'JavaScript'],
     imageHint: 'Personal portfolio displaying projects and skills',
     github: 'https://github.com/suraj-kumar1-8/portfolio',
-    demo: '#',
+    demo: 'https://suraj-fullstack.vercel.app/',
     challenges: [
       'Designing a visually appealing portfolio that stands out',
       'Optimizing performance for smooth animations and fast loading',
@@ -92,24 +92,24 @@ const projects = [
     ]
   },
   {
-    title: 'AI Chatbot System',
-    desc: 'An AI-powered chatbot built using MERN stack and Python that can interact with users and answer queries intelligently.',
+    title: 'Mental Health Chatbot',
+    desc: 'An AI-powered chatbot designed to provide mental health support and resources. The chatbot uses natural language processing to understand user queries and provide empathetic responses, along with links to helpful resources.',
     category: 'AI',
-    problem: 'Traditional chatbots are limited in their ability to understand complex queries and provide intelligent responses. An AI-powered system can learn and adapt better.',
-    architecture: 'Frontend built with React for the chat interface, Node.js/Express for API handling, MongoDB for conversation history and user data. Python backend for AI/ML processing and intelligent response generation using NLP models.',
+    problem: 'Many individuals struggle to find accessible and immediate mental health support, especially during times of crisis. An AI chatbot can provide a first line of support, offering empathetic responses and directing users to appropriate resources.',
+    architecture: 'Frontend built with React for a conversational interface, Node.js/Express for backend API handling, MongoDB for storing user interactions and resources. The chatbot integrates with NLP models to understand user queries and generate empathetic responses.',
     tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Python', 'AI Integration'],
     imageHint: 'AI chatbot conversation interface',
-    github: '#',
+    github: 'https://github.com/suraj-kumar1-8/Mental-health-chatbot',
     demo: '#',
     challenges: [
-      'Implementing advanced NLP models for better query understanding',
-      'Managing real-time conversations with low latency responses',
-      'Training AI models on domain-specific data for accurate responses'
+      'Integrating NLP models to understand and respond to user queries effectively',
+      'Ensuring the chatbot provides empathetic and supportive responses',
+      'Designing a user-friendly conversational interface'
     ],
     learnings: [
-      'Gained experience integrating AI and ML models with full-stack applications',
-      'Learned NLP concepts and conversation flow management',
-      'Improved understanding of real-time communication systems'
+      'Gained experience in AI integration and natural language processing',
+      'Learned how to design and implement conversational interfaces',
+      'Improved skills in handling user data and interactions securely'
     ]
   }
 ]
@@ -120,28 +120,22 @@ export default function Projects() {
   const [ref, inView] = useInView(0.2)
   const [selectedCategory, setSelectedCategory] = useState('All Projects')
   const [selectedProject, setSelectedProject] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  console.log(selectedProject)
 
   const filteredProjects = selectedCategory === 'All Projects'
     ? projects
     : projects.filter(p => p.category === selectedCategory)
 
-  const handleCaseStudyClick = (project) => {
-    setSelectedProject(project)
-    setIsModalOpen(true)
-  }
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setTimeout(() => setSelectedProject(null), 300)
-  }
+  const handleCloseModal = () => setSelectedProject(null)
 
   return (
-    <section ref={ref} aria-label="Highlighted projects">
-      <SectionHeading
-        title="Projects"
-        subtitle="A selection of work that reflects how I think about product, reliability and UX"
-      />
+    <>
+      <section ref={ref} aria-label="Highlighted projects">
+        <SectionHeading
+          title="Projects"
+          subtitle="A selection of work that reflects how I think about product, reliability and UX"
+        />
 
       {/* Filter Buttons */}
       <motion.div
@@ -189,7 +183,7 @@ export default function Projects() {
             >
               <ProjectCard 
                 {...p} 
-                onCaseStudyClick={() => handleCaseStudyClick(p)}
+                onCaseStudyClick={() => setSelectedProject(p)}
                 categoryBadge={p.category}
               />
             </motion.div>
@@ -207,7 +201,11 @@ export default function Projects() {
         </motion.div>
       )}
 
-      <ProjectCaseStudy project={selectedProject} isOpen={isModalOpen} onClose={handleCloseModal} />
-    </section>
+      </section>
+
+      {selectedProject && (
+        <ProjectCaseStudy project={selectedProject} onClose={handleCloseModal} />
+      )}
+    </>
   )
 }
