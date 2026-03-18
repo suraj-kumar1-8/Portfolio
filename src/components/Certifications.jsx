@@ -6,88 +6,137 @@ import useInView from '../hooks/useInView'
 import SectionHeading from './common/SectionHeading'
 import { ANIMATION_DURATIONS, ANIMATION_DELAYS, HOVER_EFFECTS } from '../constants/animations'
 
+const buildDescription = (title) => {
+  if (title.toLowerCase().includes('network')) {
+    return 'Focused on networking fundamentals, protocols, and practical communication concepts across modern systems.'
+  }
+  if (title.toLowerCase().includes('prompt engineering') || title.toLowerCase().includes('generative ai')) {
+    return 'Covers practical AI workflows, prompt strategies, and applied usage of modern large language model tools.'
+  }
+  if (title.toLowerCase().includes('cloud')) {
+    return 'Introduces cloud service models, deployment approaches, and foundational concepts for scalable infrastructure.'
+  }
+  if (title.toLowerCase().includes('python')) {
+    return 'Builds core programming fundamentals with Python syntax, problem-solving logic, and hands-on coding exercises.'
+  }
+  if (title.toLowerCase().includes('responsive web design')) {
+    return 'Covers modern responsive layout techniques, accessibility basics, and standards-driven frontend design practices.'
+  }
+  if (title.toLowerCase().includes('data structures') || title.toLowerCase().includes('automata') || title.toLowerCase().includes('theory')) {
+    return 'Strengthens algorithmic thinking with structured problem-solving, complexity awareness, and foundational CS principles.'
+  }
+  if (title.toLowerCase().includes('hardware') || title.toLowerCase().includes('operating systems')) {
+    return 'Explores computer hardware architecture and operating system fundamentals for strong systems-level understanding.'
+  }
+  if (title.toLowerCase().includes('c++')) {
+    return 'Hands-on training in C++, object-oriented design, and DSA techniques used in real interview-style problems.'
+  }
+  return 'Professional certification focused on practical technical skills and applied learning through structured modules.'
+}
+
 const certifications = [
   {
-    title: 'Full Stack Web Development',
-    organization: 'Udemy',
+    title: 'The Bits and Bytes of Computer Networking',
+    organization: 'Google (Coursera)',
     year: '2024',
-    description: 'Comprehensive course covering MERN stack, authentication, and deployment',
-    certificateUrl: '#',
-    certificateImage: '/certificate-placeholder.svg'
+    description: buildDescription('The Bits and Bytes of Computer Networking'),
+    certificateUrl: 'https://www.coursera.org/account/accomplishments/verify/2GO88PDOZ6ZP',
+    certificateImage: '/bits:bytes.pdf'
   },
   {
-    title: 'Data Structures & Algorithms',
-    organization: 'CSC Pathshala',
+    title: 'ChatGPT-4 Prompt Engineering: ChatGPT, Generative AI, & LLMs',
+    organization: 'Infosys',
+    year: '2025',
+    description: buildDescription('ChatGPT-4 Prompt Engineering: ChatGPT, Generative AI, & LLMs'),
+    certificateUrl: '#',
+    certificateImage: '/chatgpt-4.pdf'
+  },
+  {
+    title: 'Build Generative AI Apps and Solutions with No-Code Tools',
+    organization: 'Infosys',
+    year: '2025',
+    description: buildDescription('Build Generative AI Apps and Solutions with No-Code Tools'),
+    certificateUrl: '#',
+    certificateImage: '/genai.pdf'
+  },
+  {
+    title: 'Cloud Computing',
+    organization: 'NPTEL',
+    score: '54%',
+    year: '2025',
+    description: buildDescription('Cloud Computing'),
+    certificateUrl: '#',
+    certificateImage: '/cloud.pdf'
+  },
+  {
+    title: 'Fundamentals of Network Communication',
+    organization: 'University of Colorado',
     year: '2024',
-    description: 'In-depth training on DSA patterns and problem-solving techniques',
+    description: buildDescription('Fundamentals of Network Communication'),
     certificateUrl: '#',
-    certificateImage: '/certificate-placeholder.svg'
+    certificateImage: '/cn.pdf'
   },
   {
-    title: 'React Advanced Patterns',
-    organization: 'Frontend Masters',
+    title: 'Computational Theory: Language Principles & Finite Automata theory',
+    organization: 'Infosys',
+    year: '2025',
+    description: buildDescription('Computational Theory: Language Principles & Finite Automata theory'),
+    certificateUrl: '#',
+    certificateImage: '/computationaltheory.pdf'
+  },
+  {
+    title: 'C++ Programming: OOPS and DSA (Summer Training)',
+    organization: 'CSE Pathshala',
+    duration: '1 Month',
+    year: '2025',
+    description: buildDescription('C++ Programming: OOPS and DSA (Summer Training)'),
+    certificateUrl: '#',
+    certificateImage: '/csepathshala.pdf'
+  },
+  {
+    title: 'Responsive Web Design',
+    organization: 'freeCodeCamp',
     year: '2023',
-    description: 'Advanced React concepts, hooks, and performance optimization',
+    description: buildDescription('Responsive Web Design'),
     certificateUrl: '#',
-    certificateImage: '/certificate-placeholder.svg'
+    certificateImage: '/freecodecamp.pdf'
   },
+  
   {
-    title: 'AWS Solutions Architect Associate',
-    organization: 'Amazon Web Services',
-    year: '2023',
-    description: 'Cloud architecture, EC2, S3, and AWS deployment strategies',
-    certificateUrl: '#',
-    certificateImage: '/certificate-placeholder.svg'
-  },
-  {
-    title: 'Node.js & Express Masterclass',
-    organization: 'Udemy',
-    year: '2023',
-    description: 'Backend development with Node.js, Express, and REST APIs',
-    certificateUrl: '#',
-    certificateImage: '/certificate-placeholder.svg'
-  },
-  {
-    title: 'MongoDB Complete Guide',
-    organization: 'Udemy',
-    year: '2023',
-    description: 'Database design, aggregations, and optimization',
-    certificateUrl: '#',
-    certificateImage: '/certificate-placeholder.svg'
-  },
-  {
-    title: 'JavaScript Algorithms & DS',
-    organization: 'The Complete JavaScript Course',
-    year: '2022',
-    description: 'Core JavaScript concepts and algorithmic problem-solving',
-    certificateUrl: '#',
-    certificateImage: '/certificate-placeholder.svg'
-  },
-  {
-    title: 'Summer Training Certification',
-    organization: 'CK Summer Training College / CAC Pathshala',
+    title: 'Introduction to Python',
+    organization: 'Infosys',
     year: '2024',
-    description: 'Completed summer training where I learned core programming and problem solving concepts including DSA and UPS related programming fundamentals.',
+    description: buildDescription('Introduction to Python'),
     certificateUrl: '#',
-    certificateImage: '/certificate-placeholder.svg'
+    certificateImage: '/introductiontopython.pdf'
   },
   {
-    title: 'Community Development Project (CDP)',
-    organization: 'College Community Development Program',
+    title: 'Data Structures and Algorithms (72 Hours)',
+    organization: 'New Collab',
     year: '2024',
-    description: 'Participated in a community development project focused on plant-based environmental initiatives and teamwork for community improvement.',
+    description: buildDescription('Data Structures and Algorithms (72 Hours)'),
     certificateUrl: '#',
-    certificateImage: '/certificate-placeholder.svg'
+    certificateImage: '/neocolab.pdf'
+  },
+  {
+    title: 'Introduction to Hardware and Operating Systems',
+    organization: 'IBM',
+    year: '2024',
+    description: buildDescription('Introduction to Hardware and Operating Systems'),
+    certificateUrl: '#',
+    certificateImage: '/os.pdf'
   }
 ]
 
 export default function Certifications() {
   const [ref, inView] = useInView(0.2)
   const [selectedCertificate, setSelectedCertificate] = useState(null)
+  const [zoomLevel, setZoomLevel] = useState(1)
 
   useEffect(() => {
     if (!selectedCertificate) return undefined
     document.body.style.overflow = 'hidden'
+    setZoomLevel(1)
 
     const handleEsc = (event) => {
       if (event.key === 'Escape') {
@@ -109,6 +158,19 @@ export default function Certifications() {
 
   const handleCloseCertificate = () => {
     setSelectedCertificate(null)
+    setZoomLevel(1)
+  }
+
+  const handleZoomIn = () => {
+    setZoomLevel((prev) => Math.min(prev + 0.25, 3))
+  }
+
+  const handleZoomOut = () => {
+    setZoomLevel((prev) => Math.max(prev - 0.25, 1))
+  }
+
+  const handleZoomReset = () => {
+    setZoomLevel(1)
   }
 
   return (
@@ -124,7 +186,7 @@ export default function Certifications() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: ANIMATION_DURATIONS.entrance }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {certifications.map((cert, idx) => (
             <motion.div
@@ -150,7 +212,7 @@ export default function Certifications() {
                       <FaExternalLinkAlt className="text-lg text-sky-400" />
                     </div>
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-800/60 border border-white/10 text-slate-300 whitespace-nowrap">
-                      {cert.year}
+                      {cert.score ? `${cert.year} • ${cert.score}` : cert.year}
                     </span>
                   </div>
 
@@ -161,6 +223,10 @@ export default function Certifications() {
                   <p className="text-sm text-slate-400 mb-1">
                     {cert.organization}
                   </p>
+
+                  {cert.duration && (
+                    <p className="text-xs text-slate-400/90 mb-2">Duration: {cert.duration}</p>
+                  )}
 
                   <p className="text-sm text-slate-300 leading-relaxed flex-1 mb-4">
                     {cert.description}
@@ -212,14 +278,49 @@ export default function Certifications() {
               </button>
 
               <div className="p-6 md:p-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-slate-100 mb-2 pr-10">
-                  {selectedCertificate.title}
-                </h2>
+                <div className="flex flex-wrap items-start justify-between gap-3 mb-2 pr-10">
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-100">
+                    {selectedCertificate.title}
+                  </h2>
+                  {!((selectedCertificate.certificateImage || '').toLowerCase().endsWith('.pdf')) && (
+                    <div className="inline-flex items-center gap-1 rounded-lg bg-slate-900/70 border border-white/10 p-1">
+                      <button
+                        type="button"
+                        onClick={handleZoomOut}
+                        className="h-8 w-8 rounded-md text-slate-200 hover:bg-slate-800/80 transition-colors"
+                        aria-label="Zoom out"
+                      >
+                        -
+                      </button>
+                      <span className="min-w-14 text-center text-xs text-slate-300">
+                        {Math.round(zoomLevel * 100)}%
+                      </span>
+                      <button
+                        type="button"
+                        onClick={handleZoomIn}
+                        className="h-8 w-8 rounded-md text-slate-200 hover:bg-slate-800/80 transition-colors"
+                        aria-label="Zoom in"
+                      >
+                        +
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleZoomReset}
+                        className="px-2 h-8 rounded-md text-xs text-slate-300 hover:bg-slate-800/80 transition-colors"
+                        aria-label="Reset zoom"
+                      >
+                        Reset
+                      </button>
+                    </div>
+                  )}
+                </div>
                 <p className="text-slate-400 mb-6">
                   {selectedCertificate.organization} • {selectedCertificate.year}
+                  {selectedCertificate.score ? ` • Score: ${selectedCertificate.score}` : ''}
+                  {selectedCertificate.duration ? ` • Duration: ${selectedCertificate.duration}` : ''}
                 </p>
 
-                <div className="bg-slate-900/60 rounded-xl p-3 border border-white/5">
+                <div className="bg-slate-900/60 rounded-xl p-3 border border-white/5 overflow-auto max-h-[70vh]">
                   {(selectedCertificate.certificateImage || '').toLowerCase().endsWith('.pdf') ? (
                     <iframe
                       title={`${selectedCertificate.title} certificate preview`}
@@ -227,10 +328,19 @@ export default function Certifications() {
                       className="w-full h-[70vh] rounded-lg border border-white/10"
                     />
                   ) : (
-                    <img
+                    <motion.img
                       src={selectedCertificate.certificateImage || '/certificate-placeholder.svg'}
                       alt={`${selectedCertificate.title} certificate`}
-                      className="w-full h-auto rounded-lg"
+                      animate={{ scale: zoomLevel }}
+                      transition={{ duration: ANIMATION_DURATIONS.standard, ease: 'easeOut' }}
+                      onDoubleClick={() => {
+                        if (zoomLevel === 1) {
+                          setZoomLevel(2)
+                        } else {
+                          setZoomLevel(1)
+                        }
+                      }}
+                      className={`w-full h-auto rounded-lg select-none ${zoomLevel > 1 ? 'cursor-zoom-out' : 'cursor-zoom-in'}`}
                     />
                   )}
                 </div>

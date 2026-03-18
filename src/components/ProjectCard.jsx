@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import { ANIMATION_DURATIONS, HOVER_EFFECTS } from '../constants/animations'
 
-export default function ProjectCard({ title, desc, tags, github, demo, imageHint, onCaseStudyClick }) {
+export default function ProjectCard({ title, desc, tags, github, demo, imageHint, image, onCaseStudyClick }) {
   const getTagClasses = (tag) => {
     const lower = tag.toLowerCase()
     const isKeyTech =
@@ -31,7 +31,17 @@ export default function ProjectCard({ title, desc, tags, github, demo, imageHint
 
       {/* Preview image / gradient */}
       <div className="relative h-32 md:h-40 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-sky-500 to-slate-900 opacity-80" />
+        {image ? (
+          <img
+            src={image}
+            alt={`${title} preview`}
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-sky-500 to-slate-900 opacity-80" />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/40 to-transparent" />
         <div className="relative z-10 flex h-full items-end justify-between px-4 pb-3">
           <div className="text-xs text-slate-100/80">
             <p className="font-semibold uppercase tracking-wide">Preview</p>

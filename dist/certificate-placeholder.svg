@@ -1,46 +1,56 @@
-<svg width="1600" height="1100" viewBox="0 0 1600 1100" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<svg width="1600" height="1100" viewBox="0 0 1600 1100" xmlns="http://www.w3.org/2000/svg"
+  role="img" aria-labelledby="title desc">
   <title id="title">Certificate Preview</title>
   <desc id="desc">Placeholder certificate image for portfolio modal preview.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#111827"/>
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#111827" />
     </linearGradient>
     <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#8b5cf6"/>
-      <stop offset="50%" stop-color="#38bdf8"/>
-      <stop offset="100%" stop-color="#34d399"/>
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#34d399" />
     </linearGradient>
   </defs>
 
-  <rect x="0" y="0" width="1600" height="1100" fill="url(#bg)"/>
-  <rect x="56" y="56" width="1488" height="988" rx="28" fill="#0b1220" stroke="#334155" stroke-width="2"/>
-  <rect x="86" y="86" width="1428" height="928" rx="20" fill="#0f172a" stroke="url(#accent)" stroke-width="4"/>
+  <rect x="0" y="0" width="1600" height="1100" fill="url(#bg)" />
+  <rect x="56" y="56" width="1488" height="988" rx="28" fill="#0b1220" stroke="#334155"
+    stroke-width="2" />
+  <rect x="86" y="86" width="1428" height="928" rx="20" fill="#0f172a" stroke="url(#accent)"
+    stroke-width="4" />
 
-  <text x="800" y="230" fill="#94a3b8" text-anchor="middle" font-size="34" font-family="Georgia, serif" letter-spacing="4">
+  <text x="800" y="230" fill="#94a3b8" text-anchor="middle" font-size="34"
+    font-family="Georgia, serif" letter-spacing="4">
     CERTIFICATE OF COMPLETION
   </text>
 
-  <rect x="430" y="286" width="740" height="4" rx="2" fill="url(#accent)"/>
+  <rect x="430" y="286" width="740" height="4" rx="2" fill="url(#accent)" />
 
-  <text x="800" y="410" fill="#e2e8f0" text-anchor="middle" font-size="28" font-family="Georgia, serif">
+  <text x="800" y="410" fill="#e2e8f0" text-anchor="middle" font-size="28"
+    font-family="Georgia, serif">
     This is a placeholder preview image.
   </text>
-  <text x="800" y="468" fill="#cbd5e1" text-anchor="middle" font-size="24" font-family="Georgia, serif">
+  <text x="800" y="468" fill="#cbd5e1" text-anchor="middle" font-size="24"
+    font-family="Georgia, serif">
     Replace certificateImage with your real certificate file path.
   </text>
 
-  <rect x="520" y="560" width="560" height="170" rx="18" fill="#111827" stroke="#334155"/>
-  <text x="800" y="635" fill="#a5f3fc" text-anchor="middle" font-size="40" font-family="Georgia, serif">
+  <rect x="520" y="560" width="560" height="170" rx="18" fill="#111827" stroke="#334155" />
+  <text x="800" y="635" fill="#a5f3fc" text-anchor="middle" font-size="40"
+    font-family="Georgia, serif">
     Your Name Here
   </text>
-  <text x="800" y="680" fill="#94a3b8" text-anchor="middle" font-size="20" font-family="Arial, sans-serif">
+  <text x="800" y="680" fill="#94a3b8" text-anchor="middle" font-size="20"
+    font-family="Arial, sans-serif">
     Professional Certification
   </text>
 
-  <circle cx="510" cy="840" r="56" fill="none" stroke="#38bdf8" stroke-width="3"/>
-  <circle cx="1090" cy="840" r="56" fill="none" stroke="#8b5cf6" stroke-width="3"/>
+  <circle cx="510" cy="840" r="56" fill="none" stroke="#38bdf8" stroke-width="3" />
+  <circle cx="1090" cy="840" r="56" fill="none" stroke="#8b5cf6" stroke-width="3" />
 
-  <text x="510" y="850" fill="#67e8f9" text-anchor="middle" font-size="18" font-family="Arial, sans-serif">Issuer</text>
-  <text x="1090" y="850" fill="#c4b5fd" text-anchor="middle" font-size="18" font-family="Arial, sans-serif">Date</text>
+  <text x="510" y="850" fill="#67e8f9" text-anchor="middle" font-size="18"
+    font-family="Arial, sans-serif">Issuer</text>
+  <text x="1090" y="850" fill="#c4b5fd" text-anchor="middle" font-size="18"
+    font-family="Arial, sans-serif">Date</text>
 </svg>

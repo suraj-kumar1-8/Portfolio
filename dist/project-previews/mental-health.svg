@@ -1,0 +1,18 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img"
+  aria-label="Mental health chatbot preview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14b8a6" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)" />
+  <rect x="90" y="90" width="1020" height="520" rx="20" fill="#0b1220" stroke="#5eead4"
+    stroke-opacity="0.5" />
+  <rect x="130" y="130" width="940" height="420" rx="16" fill="#111827" />
+  <rect x="170" y="180" width="420" height="70" rx="14" fill="#1f2937" />
+  <rect x="610" y="290" width="420" height="70" rx="14" fill="#0f766e" fill-opacity="0.6" />
+  <rect x="170" y="400" width="420" height="70" rx="14" fill="#1f2937" />
+  <text x="130" y="70" fill="#ccfbf1" font-size="22" font-family="Arial, sans-serif">Mental Health
+    Chatbot</text>
+</svg>

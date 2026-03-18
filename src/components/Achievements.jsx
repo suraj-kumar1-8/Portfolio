@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaCode, FaStar, FaTrophy, FaLightbulb, FaGithub, FaAws } from 'react-icons/fa'
+import { FaCode, FaStar, FaTrophy, FaGithub, FaCloud } from 'react-icons/fa'
 import useInView from '../hooks/useInView'
 import SectionHeading from './common/SectionHeading'
 import { ANIMATION_DURATIONS, ANIMATION_DELAYS, HOVER_EFFECTS } from '../constants/animations'
@@ -8,55 +8,52 @@ import { ANIMATION_DURATIONS, ANIMATION_DELAYS, HOVER_EFFECTS } from '../constan
 const achievements = [
   {
     icon: FaCode,
-    title: 'LeetCode',
+    title: 'Solved 200+ DSA Problems',
     highlight: '200+',
-    highlightLabel: 'Problems',
-    description: 'Solved 200+ Data Structures & Algorithms problems with focus on patterns and best practices',
+    highlightLabel: 'DSA Problems',
+    description: 'Solving data structures and algorithms problems on LeetCode since 2025, focusing on consistency and improving problem-solving skills.',
+    year: '2025 - Present',
     color: 'from-yellow-500 to-orange-500',
     bgColor: 'bg-yellow-500/10'
   },
   {
     icon: FaStar,
-    title: 'HackerRank',
-    highlight: '5★',
+    title: '4★ Rating',
+    highlight: '4★',
     highlightLabel: 'Rating',
-    description: 'Achieved 5-star rating across JavaScript, Python, Java, C++, and Problem Solving',
+    description: 'Achieved 4-star rating in JavaScript, Python, Java, C++, and Problem Solving on HackerRank.',
+    year: '2025',
     color: 'from-green-500 to-emerald-500',
     bgColor: 'bg-green-500/10'
   },
   {
     icon: FaTrophy,
-    title: 'HackVega Coding Contest',
-    highlight: 'AIR 221',
+    title: 'AIR 201',
+    organization: 'Myntra (via MyCareerNet)',
+    highlight: 'AIR 201',
     highlightLabel: 'Rank',
-    description: 'Achieved All India Rank 221 in HackVega Coding Contest by Myntra via MyCareerNet',
+    description: 'Participated in HackVega coding contest and secured All India Rank 201.',
+    year: '2025',
     color: 'from-purple-500 to-pink-500',
     bgColor: 'bg-purple-500/10'
   },
   {
-    icon: FaLightbulb,
-    title: 'Strong DSA Foundation',
-    highlight: '100%',
-    highlightLabel: 'Commitment',
-    description: 'Dedicated practice in critical problem-solving patterns, optimization techniques, and algorithmic thinking',
+    icon: FaGithub,
+    title: 'MERN Stack Development',
+    highlight: 'MERN',
+    highlightLabel: 'Journey',
+    description: 'Building full stack applications using MongoDB, Express.js, React, and Node.js since 2025. Deployed one project and working on improving development skills through real-world projects.',
+    year: '2025 - Present',
     color: 'from-blue-500 to-cyan-500',
     bgColor: 'bg-blue-500/10'
   },
   {
-    icon: FaGithub,
-    title: 'Full Stack Portfolio',
-    highlight: '5+',
-    highlightLabel: 'Projects',
-    description: 'Built and deployed multiple production-quality MERN stack applications with real-world features',
-    color: 'from-slate-400 to-slate-600',
-    bgColor: 'bg-slate-500/10'
-  },
-  {
-    icon: FaAws,
-    title: 'Cloud Deployment',
-    highlight: '∞',
-    highlightLabel: 'Scaling',
-    description: 'Experienced in AWS deployments, EC2 instances, S3 storage, and cloud infrastructure optimization',
+    icon: FaCloud,
+    title: 'Cloud & DevOps (Beginner Level)',
+    highlight: 'Cloud',
+    highlightLabel: 'Hands-on',
+    description: 'Hands-on experience with cloud and DevOps concepts including application deployment, Docker basics, and working with cloud services. Familiar with building and deploying projects using modern development workflows and tools, with a basic understanding of production-ready practices.',
+    year: '2025',
     color: 'from-orange-400 to-red-500',
     bgColor: 'bg-orange-500/10'
   }
@@ -69,7 +66,7 @@ export default function Achievements() {
     <section ref={ref} aria-label="Achievements" className="relative">
       <SectionHeading 
         title="Achievements" 
-        subtitle="A showcase of milestones, skills, and accomplishments in my development journey"
+        subtitle="Real milestones across problem solving, full stack development, and cloud experience"
       />
 
       <div className="max-w-6xl mx-auto">
@@ -104,6 +101,9 @@ export default function Achievements() {
                         <Icon className={`text-xl text-white`} />
                       </div>
                       <div className="text-right">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold bg-slate-900/70 border border-white/10 text-slate-300 tracking-wide uppercase mb-2">
+                          {achievement.year}
+                        </span>
                         <p className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${achievement.color} bg-clip-text text-transparent`}>
                           {achievement.highlight}
                         </p>
@@ -116,6 +116,10 @@ export default function Achievements() {
                     <h3 className="text-lg md:text-xl font-bold text-slate-100 mb-2">
                       {achievement.title}
                     </h3>
+
+                    {achievement.organization && (
+                      <p className="text-xs text-slate-400 mb-2">{achievement.organization}</p>
+                    )}
 
                     <p className="text-sm text-slate-300 leading-relaxed flex-1">
                       {achievement.description}

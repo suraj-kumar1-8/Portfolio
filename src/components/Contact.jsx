@@ -8,7 +8,7 @@ import { ANIMATION_DURATIONS, ANIMATION_DELAYS, HOVER_EFFECTS } from '../constan
 
 export default function Contact() {
   const [ref, inView] = useInView(0.2)
-  const formRef = useRef(null)
+  const formRef = useRef()
   const [status, setStatus] = useState('idle') // idle | sending | success | error
   const [formData, setFormData] = useState({
     user_name: '',
@@ -24,7 +24,7 @@ export default function Contact() {
     }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (status === 'sending') return
 
@@ -37,37 +37,27 @@ export default function Contact() {
 
     setStatus('sending')
 
-    try {
-      // Initialize EmailJS (only once)
-      if (!window.emailjsInitialized) {
-        emailjs.init('YOUR_PUBLIC_KEY') // Replace with your public key
-        window.emailjsInitialized = true
-      }
-
-      // Send email using emailjs.send
-      await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your service ID
-        'YOUR_TEMPLATE_ID', // Replace with your template ID
-        {
-          user_name: formData.user_name,
-          user_email: formData.user_email,
-          message: formData.message,
-          to_email: 'surajkumargupta7491@gmai.com' // Replace with your email
-        },
-        'YOUR_PUBLIC_KEY' // Replace with your public key
-      )
-
-      setStatus('success')
-      setFormData({ user_name: '', user_email: '', message: '' })
-      if (formRef.current) {
-        formRef.current.reset()
-      }
-      setTimeout(() => setStatus('idle'), 4000)
-    } catch (err) {
-      console.error('EmailJS error:', err)
-      setStatus('error')
-      setTimeout(() => setStatus('idle'), 4000)
-    }
+    emailjs.sendForm(
+      'service_j6lv5fm',
+      'template_ksf0toi',
+      formRef.current,
+      'EXqvHgKpKmKUsXj0o'
+    )
+      .then(() => {
+        alert('Message sent successfully!')
+        setStatus('success')
+        setFormData({ user_name: '', user_email: '', message: '' })
+        if (formRef.current) {
+          formRef.current.reset()
+        }
+        setTimeout(() => setStatus('idle'), 4000)
+      })
+      .catch((error) => {
+        console.error('EmailJS error:', error)
+        alert('Failed to send message')
+        setStatus('error')
+        setTimeout(() => setStatus('idle'), 4000)
+      })
   }
 
   const contactInfo = [
