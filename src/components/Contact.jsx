@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import emailjs from '@emailjs/browser'
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa'
 import SectionHeading from './common/SectionHeading'
 import useInView from '../hooks/useInView'
 import { ANIMATION_DURATIONS, ANIMATION_DELAYS, HOVER_EFFECTS } from '../constants/animations'
@@ -74,6 +74,13 @@ export default function Contact() {
       value: 'Suraj Kumar',
       link: 'https://www.linkedin.com/in/suraj-kumar2111/',
       color: 'text-blue-400'
+    },
+    {
+      icon: FaWhatsapp,
+      label: 'WhatsApp',
+      value: 'Chat on WhatsApp',
+      link: 'https://wa.me/916206239371',
+      color: 'text-emerald-400'
     },
     {
       icon: FaEnvelope,

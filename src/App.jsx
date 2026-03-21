@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
+import Education from './components/Education'
 import Skills from './components/Skills'
 import LiveStats from './components/LiveStats'
 import FeaturedProject from './components/FeaturedProject'
@@ -39,6 +40,10 @@ export default function App() {
 
         <section id="about" className="pt-20 pb-16 scroll-mt-20">
           <About />
+        </section>
+
+        <section id="education" className="pt-20 pb-16 scroll-mt-20">
+          <Education />
         </section>
 
         <section id="skills" className="pt-20 pb-16 scroll-mt-20">

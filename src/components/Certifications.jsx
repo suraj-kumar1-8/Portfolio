@@ -36,6 +36,15 @@ const buildDescription = (title) => {
 
 const certifications = [
   {
+    title: 'Problem Solving (HackerRank)',
+    organization: 'HackerRank',
+    year: 'Add Year',
+    badge: '4★',
+    description: 'Earned 4★ in Problem Solving by solving 200+ DSA questions.',
+    certificateUrl: '#',
+    certificateImage: '/certificate-placeholder.svg'
+  },
+  {
     title: 'The Bits and Bytes of Computer Networking',
     organization: 'Google (Coursera)',
     year: '2024',
@@ -211,9 +220,16 @@ export default function Certifications() {
                     <div className="p-3 rounded-lg bg-gradient-to-br from-purple-500/20 to-sky-400/20 group-hover:from-purple-500/30 group-hover:to-sky-400/30 transition-all duration-300">
                       <FaExternalLinkAlt className="text-lg text-sky-400" />
                     </div>
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-800/60 border border-white/10 text-slate-300 whitespace-nowrap">
-                      {cert.score ? `${cert.year} • ${cert.score}` : cert.year}
-                    </span>
+                    <div className="flex flex-wrap items-center justify-end gap-2">
+                      {cert.badge && (
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 whitespace-nowrap">
+                          {cert.badge}
+                        </span>
+                      )}
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-800/60 border border-white/10 text-slate-300 whitespace-nowrap">
+                        {cert.score ? `${cert.year} • ${cert.score}` : cert.year}
+                      </span>
+                    </div>
                   </div>
 
                   <h3 className="text-lg md:text-xl font-semibold text-slate-100 mb-2">
@@ -282,37 +298,51 @@ export default function Certifications() {
                   <h2 className="text-2xl md:text-3xl font-bold text-slate-100">
                     {selectedCertificate.title}
                   </h2>
-                  {!((selectedCertificate.certificateImage || '').toLowerCase().endsWith('.pdf')) && (
-                    <div className="inline-flex items-center gap-1 rounded-lg bg-slate-900/70 border border-white/10 p-1">
-                      <button
-                        type="button"
-                        onClick={handleZoomOut}
-                        className="h-8 w-8 rounded-md text-slate-200 hover:bg-slate-800/80 transition-colors"
-                        aria-label="Zoom out"
+                  <div className="flex flex-wrap items-center justify-end gap-2">
+                    {selectedCertificate.certificateUrl && selectedCertificate.certificateUrl !== '#' && (
+                      <a
+                        href={selectedCertificate.certificateUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-3 h-9 rounded-lg bg-slate-900/70 border border-white/10 text-slate-200 hover:text-white hover:border-sky-400/50 transition-colors"
                       >
-                        -
-                      </button>
-                      <span className="min-w-14 text-center text-xs text-slate-300">
-                        {Math.round(zoomLevel * 100)}%
-                      </span>
-                      <button
-                        type="button"
-                        onClick={handleZoomIn}
-                        className="h-8 w-8 rounded-md text-slate-200 hover:bg-slate-800/80 transition-colors"
-                        aria-label="Zoom in"
-                      >
-                        +
-                      </button>
-                      <button
-                        type="button"
-                        onClick={handleZoomReset}
-                        className="px-2 h-8 rounded-md text-xs text-slate-300 hover:bg-slate-800/80 transition-colors"
-                        aria-label="Reset zoom"
-                      >
-                        Reset
-                      </button>
-                    </div>
-                  )}
+                        <span className="text-xs font-medium">Open Link</span>
+                        <FaExternalLinkAlt className="text-xs" />
+                      </a>
+                    )}
+
+                    {!((selectedCertificate.certificateImage || '').toLowerCase().endsWith('.pdf')) && (
+                        <div className="inline-flex items-center gap-1 rounded-lg bg-slate-900/70 border border-white/10 p-1">
+                          <button
+                            type="button"
+                            onClick={handleZoomOut}
+                            className="h-8 w-8 rounded-md text-slate-200 hover:bg-slate-800/80 transition-colors"
+                            aria-label="Zoom out"
+                          >
+                            -
+                          </button>
+                          <span className="min-w-14 text-center text-xs text-slate-300">
+                            {Math.round(zoomLevel * 100)}%
+                          </span>
+                          <button
+                            type="button"
+                            onClick={handleZoomIn}
+                            className="h-8 w-8 rounded-md text-slate-200 hover:bg-slate-800/80 transition-colors"
+                            aria-label="Zoom in"
+                          >
+                            +
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleZoomReset}
+                            className="px-2 h-8 rounded-md text-xs text-slate-300 hover:bg-slate-800/80 transition-colors"
+                            aria-label="Reset zoom"
+                          >
+                            Reset
+                          </button>
+                        </div>
+                      )}
+                  </div>
                 </div>
                 <p className="text-slate-400 mb-6">
                   {selectedCertificate.organization} • {selectedCertificate.year}
