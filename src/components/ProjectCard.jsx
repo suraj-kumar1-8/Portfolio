@@ -4,6 +4,8 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import { ANIMATION_DURATIONS, HOVER_EFFECTS } from '../constants/animations'
 
 export default function ProjectCard({ title, desc, tags, github, demo, imageHint, image, onCaseStudyClick }) {
+  const hasLiveDemo = Boolean(demo && demo !== '#')
+
   const getTagClasses = (tag) => {
     const lower = tag.toLowerCase()
     const isKeyTech =
@@ -80,9 +82,12 @@ export default function ProjectCard({ title, desc, tags, github, demo, imageHint
               target="_blank"
               rel="noreferrer"
               onClick={(event) => {
-                event.preventDefault()
                 event.stopPropagation()
-                onCaseStudyClick()
+
+                if (!hasLiveDemo) {
+                  event.preventDefault()
+                  onCaseStudyClick()
+                }
               }}
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}

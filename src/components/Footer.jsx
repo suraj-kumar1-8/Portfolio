@@ -46,7 +46,7 @@ export default function Footer() {
       <div className="max-w-4xl mx-auto px-4 text-center">
         <div className="mb-6">
           <p className="text-sm text-slate-400 mb-4">
-            suraj.kumar@example.com
+            
           </p>
           
           <div className="flex items-center justify-center gap-4">

@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import About from './components/About'
 import Skills from './components/Skills'
 import LiveStats from './components/LiveStats'
 import FeaturedProject from './components/FeaturedProject'
@@ -34,6 +35,10 @@ export default function App() {
       <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" style={{ transformStyle: 'preserve-3d' }}>
         <section id="home" className="pt-20 pb-16 scroll-mt-20">
           <Hero />
+        </section>
+
+        <section id="about" className="pt-20 pb-16 scroll-mt-20">
+          <About />
         </section>
 
         <section id="skills" className="pt-20 pb-16 scroll-mt-20">

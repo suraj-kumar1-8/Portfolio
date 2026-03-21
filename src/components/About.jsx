@@ -8,7 +8,7 @@ export default function About() {
   const [ref, inView] = useInView(0.2)
 
   return (
-    <section ref={ref} aria-label="About Suraj Kumar" className="relative">
+    <div ref={ref} aria-label="About Suraj Kumar" className="relative">
       <SectionHeading
         title="About Me"
         subtitle="Building production-ready web experiences with a focus on performance and reliability"
@@ -44,7 +44,7 @@ export default function About() {
           </div>
         </div>
       </motion.div>
-    </section>
+    </div>
   )
 }
 

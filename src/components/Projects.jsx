@@ -36,10 +36,10 @@ const projects = [
     problem: 'Users need a secure, scalable solution to upload, store, and share files with others without worrying about data security or storage limitations.',
     architecture: 'Frontend built with React, backend with Node.js/Express, MongoDB for metadata storage, AWS S3 for file storage, AWS IAM for security, and Docker for containerized deployment and scaling.',
     tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'AWS', 'Docker'],
-    image: '/project-previews/cloudshare.svg',
+    image: '/project-previews/cloushare.png',
     imageHint: 'Cloud file management dashboard with sharing options',
     github: 'https://github.com/suraj-kumar1-8/CloudShare-Cloud-File-Sharing-Platform',
-    demo: '#',
+    demo: 'https://cloudsharecloudfilesharing.vercel.app/',
     challenges: [
       'Implementing secure file upload and storage with AWS S3',
       'Managing user permissions and access controls efficiently',
