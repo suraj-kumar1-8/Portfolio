@@ -53,9 +53,13 @@ export default function Navbar() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-base sm:text-lg font-semibold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent whitespace-nowrap"
+            aria-label="Suraj Kumar"
+            className="flex items-center gap-2 text-base sm:text-lg font-semibold whitespace-nowrap"
           >
-            Suraj Kumar
+            <span className="bg-gradient-to-r from-purple-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">
+              &lt;Suraj/&gt;
+            </span>
+            <span className="text-slate-200"></span>
           </motion.div>
 
           <ul className="hidden md:flex gap-1.5 items-center">
