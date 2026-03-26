@@ -42,7 +42,7 @@ const certifications = [
     badge: '4★',
     description: 'Earned 4★ in Problem Solving by solving 200+ DSA questions.',
     certificateUrl: '#',
-    certificateImage: '/certificate-placeholder.svg'
+    certificateImage: '/pp.pdf'
   },
   {
     title: 'The Bits and Bytes of Computer Networking',
