@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { SiLeetcode, SiHackerrank } from 'react-icons/si'
+import { SiLeetcode, SiHackerrank, SiGeeksforgeeks } from 'react-icons/si'
 import SectionHeading from './common/SectionHeading'
 import { ANIMATION_DURATIONS, ANIMATION_DELAYS } from '../constants/animations'
 import useInView from '../hooks/useInView'
@@ -37,7 +37,19 @@ const stats = {
   hackerrank: {
     rating: 5,
     badges: ['JavaScript', 'Python', 'Java', 'C++', 'Problem Solving']
+  },
+  gfg: {
+    codingScore: 70,
+    solved: 33,
+    instituteRank: 10176,
+    articlesPublished: null
   }
+}
+
+const PROFILE_URLS = {
+  leetcode: 'https://leetcode.com/u/HtVI08YLj0/',
+  hackerrank: 'https://www.hackerrank.com/profile/surajkumargupt11',
+  gfg: 'https://www.geeksforgeeks.org/profile/surajkumaranb7'
 }
 
 export default function LiveStats() {
@@ -47,10 +59,10 @@ export default function LiveStats() {
     <section ref={ref} aria-label="Coding Platform Stats" className="relative">
       <SectionHeading
         title="Coding Platform Stats"
-        subtitle="Current progress on LeetCode and HackerRank"
+        subtitle="Current progress on LeetCode, HackerRank, and GeeksforGeeks"
       />
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {/* LeetCode Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -124,6 +136,17 @@ export default function LiveStats() {
               </div>
             </div>
           </div>
+
+          <motion.a
+            href={PROFILE_URLS.leetcode}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -2, scale: 1.01 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-6 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-amber-400 to-emerald-400 text-slate-900 shadow-lg shadow-amber-500/20"
+          >
+            View LeetCode Profile
+          </motion.a>
         </motion.div>
 
         {/* HackerRank Stats */}
@@ -170,6 +193,71 @@ export default function LiveStats() {
               ))}
             </div>
           </div>
+
+          <motion.a
+            href={PROFILE_URLS.hackerrank}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -2, scale: 1.01 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-6 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-emerald-400 to-lime-300 text-slate-900 shadow-lg shadow-emerald-500/20"
+          >
+            View HackerRank Profile
+          </motion.a>
+        </motion.div>
+
+        {/* GeeksforGeeks Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: ANIMATION_DURATIONS.entrance, delay: ANIMATION_DELAYS.section * 2, ease: 'easeOut' }}
+          className="glass-card rounded-2xl p-6"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <SiGeeksforgeeks className="text-2xl text-emerald-400" />
+            <h3 className="text-lg font-semibold text-slate-100">GeeksforGeeks</h3>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-slate-400">Coding Score</span>
+              <span className="text-lg font-semibold text-emerald-400">
+                <AnimatedCounter value={stats.gfg.codingScore} />
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-slate-400">Problems Solved</span>
+              <span className="text-lg font-semibold text-emerald-400">
+                <AnimatedCounter value={stats.gfg.solved} />
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-slate-400">Institute Rank</span>
+              <span className="text-lg font-semibold text-emerald-400">
+                <AnimatedCounter value={stats.gfg.instituteRank} />
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-slate-400">Articles Published</span>
+              <span className="text-lg font-semibold text-emerald-400">
+                {stats.gfg.articlesPublished == null ? '—' : <AnimatedCounter value={stats.gfg.articlesPublished} />}
+              </span>
+            </div>
+          </div>
+
+          <motion.a
+            href={PROFILE_URLS.gfg}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ y: -2, scale: 1.01 }}
+            whileTap={{ scale: 0.98 }}
+            className="mt-6 inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-emerald-400 to-teal-300 text-slate-900 shadow-lg shadow-emerald-500/20"
+          >
+            View GFG Profile
+          </motion.a>
         </motion.div>
       </div>
     </section>

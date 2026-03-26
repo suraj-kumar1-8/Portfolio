@@ -8,35 +8,13 @@ import { ANIMATION_DURATIONS, ANIMATION_DELAYS } from '../constants/animations'
 
 const projects = [
   {
-    title: 'AICTE Curriculum Portal',
-    desc: 'A comprehensive portal that provides students and educators with easy access to AICTE curriculum guidelines, course structures, and regulatory information.',
-    category: 'Full Stack',
-    problem: 'Students and educators often struggle to find accurate and up-to-date information about AICTE curriculum requirements and guidelines, leading to confusion and inefficiency in academic planning.',
-    architecture: 'Frontend built with React for dynamic content rendering, Node.js/Express for backend API handling, MongoDB for storing curriculum data and user interactions. The portal features a searchable database of AICTE regulations, interactive course maps, and a chatbot for quick queries.',
-    tags: ['MongoDB', 'Express.js', 'React', 'Node.js'],
-    image: '/project-previews/aicte-portal.svg',
-    imageHint: 'Dashboard showcasing AICTE curriculum guidelines and interactive course maps',
-    github: 'https://github.com/suraj-kumar1-8/AICTE_Curriculum_Portal',
-    demo: '#',
-    challenges: [
-      'Structuring and organizing complex regulatory information in an accessible way',
-      'Implementing an efficient search and filter system for curriculum data',
-      'Designing an intuitive UI that caters to both students and educators'
-    ],
-    learnings: [
-      'Gained experience in full-stack development with a focus on educational platforms',
-      'Learned how to handle and present complex data structures effectively',
-      'Improved skills in creating user-friendly interfaces for information-heavy applications'
-    ]
-  },
-  {
     title: 'CloudShare – Cloud File Sharing Platform',
     desc: 'A cloud-based file sharing platform where users can upload and manage files securely. The project uses AWS services and Docker for deployment and storage.',
     category: 'Full Stack',
     problem: 'Users need a secure, scalable solution to upload, store, and share files with others without worrying about data security or storage limitations.',
     architecture: 'Frontend built with React, backend with Node.js/Express, MongoDB for metadata storage, AWS S3 for file storage, AWS IAM for security, and Docker for containerized deployment and scaling.',
     tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'AWS', 'Docker'],
-    image: '/project-previews/cloushare.png',
+    image: '/project-previews/cloudshare.png',
     imageHint: 'Cloud file management dashboard with sharing options',
     github: 'https://github.com/suraj-kumar1-8/CloudShare-Cloud-File-Sharing-Platform',
     demo: 'https://cloudsharecloudfilesharing.vercel.app/',
@@ -52,13 +30,36 @@ const projects = [
     ]
   },
   {
+    title: 'AICTE Curriculum Portal',
+    desc: 'A comprehensive portal that provides students and educators with easy access to AICTE curriculum guidelines, course structures, and regulatory information.',
+    category: 'Full Stack',
+    problem: 'Students and educators often struggle to find accurate and up-to-date information about AICTE curriculum requirements and guidelines, leading to confusion and inefficiency in academic planning.',
+    architecture: 'Frontend built with React for dynamic content rendering, Node.js/Express for backend API handling, MongoDB for storing curriculum data and user interactions. The portal features a searchable database of AICTE regulations, interactive course maps, and a chatbot for quick queries.',
+    tags: ['MongoDB', 'Express.js', 'React', 'Node.js'],
+    image: '/project-previews/aicte.png',
+    imageHint: 'Dashboard showcasing AICTE curriculum guidelines and interactive course maps',
+    github: 'https://github.com/suraj-kumar1-8/AICTE_Curriculum_Portal',
+    demo: '#',
+    challenges: [
+      'Structuring and organizing complex regulatory information in an accessible way',
+      'Implementing an efficient search and filter system for curriculum data',
+      'Designing an intuitive UI that caters to both students and educators'
+    ],
+    learnings: [
+      'Gained experience in full-stack development with a focus on educational platforms',
+      'Learned how to handle and present complex data structures effectively',
+      'Improved skills in creating user-friendly interfaces for information-heavy applications'
+    ]
+  },
+  
+  {
     title: 'DEKHOINDIA – Heritage & Cultural Portal',
     desc: 'A cultural and heritage portal that showcases information about different states of India.',
     category: 'Full Stack',
     problem: 'Many people lack accessible platforms to learn about Indias diverse cultural heritage and regional information in an engaging way.',
     architecture: 'Frontend built with HTML, CSS, JavaScript, and Tailwind CSS. Backend developed with PHP for server-side logic. MySQL database stores comprehensive information about Indian states, culture, heritage, and attractions.',
     tags: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'MySQL'],
-    image: '/project-previews/dekhoindia.svg',
+    image: '/project-previews/dekhoindia.png',
     imageHint: 'Cultural portal showcasing Indian heritage and states',
     github: 'https://github.com/suraj-kumar1-8/INDIAN-HERITAGE',
     demo: '#',
@@ -102,7 +103,7 @@ const projects = [
     problem: 'Many individuals struggle to find accessible and immediate mental health support, especially during times of crisis. An AI chatbot can provide a first line of support, offering empathetic responses and directing users to appropriate resources.',
     architecture: 'Frontend built with React for a conversational interface, Node.js/Express for backend API handling, MongoDB for storing user interactions and resources. The chatbot integrates with NLP models to understand user queries and generate empathetic responses.',
     tags: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Python', 'AI Integration'],
-    image: '/project-previews/mental-health.svg',
+    image: '/project-previews/mentalhealth.png',
     imageHint: 'AI chatbot conversation interface',
     github: 'https://github.com/suraj-kumar1-8/Mental-health-chatbot',
     demo: '#',
