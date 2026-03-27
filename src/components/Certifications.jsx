@@ -38,7 +38,7 @@ const certifications = [
   {
     title: 'Problem Solving (HackerRank)',
     organization: 'HackerRank',
-    year: 'Add Year',
+    year: '2026',
     badge: '4★',
     description: 'Earned 4★ in Problem Solving by solving 200+ DSA questions.',
     certificateUrl: '#',
