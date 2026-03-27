@@ -13,7 +13,7 @@ export default function About() {
     },
     {
       label: 'DSA Questions Solved',
-      value: '100+'
+      value: '300+'
     },
     {
       label: 'MERN Stack Experience',
