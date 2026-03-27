@@ -6,6 +6,20 @@ import { ANIMATION_DURATIONS } from '../constants/animations'
 
 export default function About() {
   const [ref, inView] = useInView(0.2)
+  const aboutStats = [
+    {
+      label: 'Projects Built',
+      value: '5+'
+    },
+    {
+      label: 'DSA Questions Solved',
+      value: '100+'
+    },
+    {
+      label: 'MERN Stack Experience',
+      value: '1+ Year'
+    }
+  ]
 
   return (
     <div ref={ref} aria-label="About Suraj Kumar" className="relative">
@@ -42,6 +56,23 @@ export default function About() {
             <span className="mt-1 h-1.5 w-1.5 rounded-full bg-sky-400/80" />
             <span>Particularly interested in backend systems, problem solving, and clean, well-structured architecture.</span>
           </div>
+        </div>
+
+        <div className="mt-7 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {aboutStats.map((stat, idx) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 10 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              transition={{ duration: ANIMATION_DURATIONS.entrance, delay: idx * 0.08, ease: 'easeOut' }}
+              className="rounded-xl border border-white/10 bg-slate-800/50 px-4 py-4 text-center"
+            >
+              <p className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-purple-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-xs md:text-sm text-slate-300">{stat.label}</p>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </div>

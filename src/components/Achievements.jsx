@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaCode, FaStar, FaTrophy, FaGithub, FaCloud } from 'react-icons/fa'
+import { FaCode, FaStar, FaTrophy, FaGithub, FaCloud, FaRocket } from 'react-icons/fa'
 import useInView from '../hooks/useInView'
 import SectionHeading from './common/SectionHeading'
 import { ANIMATION_DURATIONS, ANIMATION_DELAYS, HOVER_EFFECTS } from '../constants/animations'
@@ -56,6 +56,16 @@ const achievements = [
     year: '2025',
     color: 'from-orange-400 to-red-500',
     bgColor: 'bg-orange-500/10'
+  },
+  {
+    icon: FaRocket,
+    title: '2+ Live Projects Deployed',
+    highlight: '2+',
+    highlightLabel: 'Live Projects',
+    description: 'Successfully deployed and maintained multiple full stack projects with live URLs, focusing on reliability, performance, and clean user experience.',
+    year: '2025 - Present',
+    color: 'from-cyan-500 to-blue-500',
+    bgColor: 'bg-cyan-500/10'
   }
 ]
 

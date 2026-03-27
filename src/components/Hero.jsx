@@ -5,7 +5,7 @@ import { FiDownload } from 'react-icons/fi'
 import { SiLeetcode } from 'react-icons/si'
 import Typewriter from 'typewriter-effect'
 import HeroGeometry from './common/HeroGeometry'
-import surajImage from '../../surajport.jpeg'
+import surajImage from '../../surajjj.jpeg'
 
 import { ANIMATION_DURATIONS, ANIMATION_DELAYS, HOVER_EFFECTS } from '../constants/animations'
 
@@ -190,7 +190,7 @@ export default function Hero() {
             transition={{ delay: ANIMATION_DELAYS.section * 2, duration: ANIMATION_DURATIONS.entrance, ease: 'easeOut' }}
             className="flex items-center justify-center"
           >
-            <div className="relative w-72 h-72 md:w-96 md:h-96 z-10">
+            <div className="relative h-72 w-72 sm:h-80 sm:w-80 md:h-96 md:w-96 z-10">
               {/* Static gradient ring - CSS animation only */}
               <div
                 className="absolute inset-0 rounded-full p-[2px] z-20 animate-spin-slow"
@@ -207,10 +207,10 @@ export default function Hero() {
               <div className="relative h-full w-full rounded-full overflow-hidden bg-gradient-to-br from-purple-600/60 via-sky-500/60 to-slate-900 z-30">
                 {/* ss*/}
                 <img
-  src={surajImage}
-  alt="Suraj Kumar"
-  className="h-full w-full object-cover rounded-full"
-/>
+                  src={surajImage}
+                  alt="Suraj Kumar"
+                  className="h-full w-full rounded-full object-cover object-[50%_20%]"
+                />
 
 
                 {/* Refined layered inner glow - depth hierarchy */}
