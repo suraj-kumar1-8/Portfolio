@@ -5,6 +5,8 @@ import { ANIMATION_DURATIONS, HOVER_EFFECTS } from '../constants/animations'
 
 export default function ProjectCard({ title, desc, tags, github, demo, imageHint, image, onCaseStudyClick }) {
   const hasLiveDemo = Boolean(demo && demo !== '#')
+  const visibleTags = tags.slice(0, 4)
+  const extraTagsCount = Math.max(0, tags.length - visibleTags.length)
 
   const getTagClasses = (tag) => {
     const lower = tag.toLowerCase()
@@ -25,7 +27,7 @@ export default function ProjectCard({ title, desc, tags, github, demo, imageHint
     <motion.article
       whileHover={{ y: HOVER_EFFECTS.lift, scale: HOVER_EFFECTS.scale }}
       transition={{ duration: ANIMATION_DURATIONS.standard, ease: 'easeOut' }}
-      className="group relative rounded-2xl bg-slate-900/60 border border-white/8 overflow-hidden shadow-lg shadow-black/10 hover:border-white/15 transition-all duration-300 cursor-pointer"
+      className="group relative h-[430px] rounded-2xl bg-slate-900/60 border border-white/8 overflow-hidden shadow-lg shadow-black/10 hover:border-white/15 transition-all duration-300 cursor-pointer flex flex-col"
       onClick={onCaseStudyClick}
     >
       {/* Glow layer */}
@@ -58,11 +60,21 @@ export default function ProjectCard({ title, desc, tags, github, demo, imageHint
       </div>
 
       {/* Content */}
-      <div className="relative z-10 p-4 md:p-5 space-y-3">
+      <div className="relative z-10 p-4 md:p-5 space-y-3 flex-1 flex flex-col">
         <div className="flex items-start justify-between gap-3">
           <div>
             <h3 className="text-base md:text-lg font-semibold text-slate-50">{title}</h3>
-            <p className="mt-1 text-xs md:text-sm text-slate-300 leading-relaxed">{desc}</p>
+            <p
+              className="mt-1 text-xs md:text-sm text-slate-300 leading-relaxed"
+              style={{
+                display: '-webkit-box',
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden'
+              }}
+            >
+              {desc}
+            </p>
           </div>
           <div className="flex flex-col items-end gap-2">
             <motion.a
@@ -99,8 +111,8 @@ export default function ProjectCard({ title, desc, tags, github, demo, imageHint
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 pt-1">
-          {tags.map((t) => (
+        <div className="mt-auto flex flex-wrap gap-2 pt-1 min-h-[56px] content-start overflow-hidden">
+          {visibleTags.map((t) => (
             <span
               key={t}
               className={`text-[11px] md:text-xs px-2 py-1 rounded-full ${getTagClasses(t)}`}
@@ -108,6 +120,11 @@ export default function ProjectCard({ title, desc, tags, github, demo, imageHint
               {t}
             </span>
           ))}
+          {extraTagsCount > 0 && (
+            <span className="text-[11px] md:text-xs px-2 py-1 rounded-full bg-slate-900/70 border border-white/10 text-slate-300">
+              +{extraTagsCount} more
+            </span>
+          )}
         </div>
       </div>
     </motion.article>
