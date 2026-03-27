@@ -17,7 +17,13 @@ import {
   SiKubernetes,
   SiJenkins,
   SiApachetomcat,
-  SiJsonwebtokens
+  SiJsonwebtokens,
+  SiGit,
+  SiGithub,
+  SiPostman,
+  SiVercel,
+  SiNetlify,
+  SiVisualstudiocode
 } from 'react-icons/si'
 import { FaGitlab, FaJava } from 'react-icons/fa'
 import useInView from '../hooks/useInView'
@@ -63,10 +69,18 @@ const skillsData = {
     { name: 'Jenkins', icon: SiJenkins, level: 75 },
     { name: 'Tomcat', icon: SiApachetomcat, level: 70 },
     { name: 'CI/CD Pipelines', icon: FaGitlab, level: 75 }
+  ],
+  'Tools & Platforms': [
+    { name: 'Git', icon: SiGit, level: 85 },
+    { name: 'GitHub', icon: SiGithub, level: 85 },
+    { name: 'Postman', icon: SiPostman, level: 82 },
+    { name: 'VS Code', icon: SiVisualstudiocode, level: 90 },
+    { name: 'Vercel', icon: SiVercel, level: 80 },
+    { name: 'Netlify', icon: SiNetlify, level: 75 }
   ]
 }
 
-const categoryOrder = ['Frontend', 'Backend', 'Programming Languages', 'Databases', 'Cloud & AWS', 'DevOps']
+const categoryOrder = ['Frontend', 'Backend', 'Programming Languages', 'Databases', 'Cloud & AWS', 'DevOps', 'Tools & Platforms']
 
 export default function Skills() {
   const [ref, inView] = useInView(0.2)
