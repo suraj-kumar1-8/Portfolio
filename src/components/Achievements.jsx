@@ -8,7 +8,7 @@ import { ANIMATION_DURATIONS, ANIMATION_DELAYS, HOVER_EFFECTS } from '../constan
 const achievements = [
   {
     icon: FaCode,
-    title: 'Solved 300+ DSA Problems',
+    title: 'Solved 200+ DSA Problems',
     highlight: '200+',
     highlightLabel: 'DSA Problems',
     description: 'Solving data structures and algorithms problems on LeetCode since 2025, focusing on consistency and improving problem-solving skills.',
